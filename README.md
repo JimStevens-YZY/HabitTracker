@@ -18,11 +18,11 @@ Include a section that gives intructions on how to install the app or run it in 
 
 ## Quick Start
 
-1. Launch the app :iphone:
-2. Create a new habit :bookmark:
-3. Set the habit name and reminder time :memo:
-4. Check off the corresponding date each day upon completing the habit :round_pushpin:
-5. View habit completion statistics and charts :bar_chart:
+1. Launch the app. :iphone:
+2. Create a new habit. :bookmark:
+3. Set the habit name and reminder time. :memo:
+4. Check off the corresponding date each day upon completing the habit.:round_pushpin:
+5. View habit completion statistics and charts. :bar_chart:
 
 ## Contributions
 
