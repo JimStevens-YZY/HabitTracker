@@ -1,15 +1,15 @@
-# Habit Tracker
+# EventGather
 
 ## Introduction
 
-Habit Tracker App is a mobile application designed to help users track and cultivate positive habits. It offers an intuitive user interface, flexible configuration options, and personalized habit management features.
+EventGather is a platform for aggregating and managing various events in one place. Whether you're planning a conference, meetup, or any other gathering, EventGather makes it happen.
 
-## Key Features
+## Features
 
-- **Habit Tracking :calendar: :** Record daily progress for each habit.
-- **Reminder Functionality :mailbox_with_mail: :** Set reminders to keep users motivated in building habits.
-- **Data Analytics :chart_with_upwards_trend: :** Provide charts and statistical data to help users analyze their habit cultivation progress.
-- **Personalization :label: :** Users can customize habit names, reminder times, and other settings.
+- **Event Discovery :golf: :** Easily discover a wide range of events happening in your area or related to your interests.
+- **Diverse Interests ⛷ :** Connect with members who share your interests, whether it's building a career network, exploring tech communities, cultivating personal branding, indulging in hobbies, or making friends with similar passions.
+- **Group Creation 💬 :** Host your own events online and in person by creating a group on your favorite topic. Watch your community grow as your group is recommended to interested people, expanding your network.
+- **Personalized Event Management :label: :** Save and revisit events of interest. Choose and connect with specific people at the events you like.
 
 
 ## Include A Section That Tells Developers How To Install The App
@@ -19,10 +19,9 @@ Include a section that gives intructions on how to install the app or run it in 
 ## Quick Start
 
 1. Launch the app. :iphone:
-2. Create a new habit. :bookmark:
-3. Set the habit name and reminder time. :memo:
-4. Check off the corresponding date each day upon completing the habit.:round_pushpin:
-5. View habit completion statistics and charts. :bar_chart:
+2. Explore Events. 🔍
+3. Create or Join Groups. 📋
+4. RSVP and Attend. 🙋‍♂️
 
 ## Contributions
 
