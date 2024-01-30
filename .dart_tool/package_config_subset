@@ -22,10 +22,6 @@ cupertino_icons
 2.19
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6/
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6/lib/
-easy_date_timeline
-3.0
-file:///Users/jimstevens/.pub-cache/hosted/pub.dev/easy_date_timeline-1.0.4/
-file:///Users/jimstevens/.pub-cache/hosted/pub.dev/easy_date_timeline-1.0.4/lib/
 fake_async
 2.12
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/fake_async-1.3.1/
@@ -34,10 +30,6 @@ flutter_lints
 2.19
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/lib/
-intl
-3.0
-file:///Users/jimstevens/.pub-cache/hosted/pub.dev/intl-0.19.0/
-file:///Users/jimstevens/.pub-cache/hosted/pub.dev/intl-0.19.0/lib/
 lints
 3.0
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/lints-2.1.1/
@@ -90,10 +82,10 @@ web
 3.2
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/web-0.3.0/
 file:///Users/jimstevens/.pub-cache/hosted/pub.dev/web-0.3.0/lib/
-habit_tracker
+event_gather
 3.2
-file:///Users/jimstevens/Downloads/HabitTracker/
-file:///Users/jimstevens/Downloads/HabitTracker/lib/
+file:///Users/jimstevens/Downloads/EventGather/
+file:///Users/jimstevens/Downloads/EventGather/lib/
 sky_engine
 3.2
 file:///Users/jimstevens/sdk/flutter/bin/cache/pkg/sky_engine/

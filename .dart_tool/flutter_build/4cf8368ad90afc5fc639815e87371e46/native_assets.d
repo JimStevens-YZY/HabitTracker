@@ -1,0 +1,1 @@
+ /Users/jimstevens/Downloads/EventGather/.dart_tool/flutter_build/4cf8368ad90afc5fc639815e87371e46/native_assets.yaml: 
