@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
- 
+
  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),      
-      initialRoute: "/",       
-      onGenerateRoute: onGenerateRoute,     
+        primarySwatch: Colors.purple,
+      ),
+      initialRoute: "/",
+      onGenerateRoute: onGenerateRoute,
     );
   }
 }

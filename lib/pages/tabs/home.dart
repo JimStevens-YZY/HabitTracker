@@ -1,70 +1,52 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(15),
-      children:<Widget>[
-        Text(
-          "Explore EventGather",
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold
-          ) 
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Home',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
         ),
-        SizedBox(
-          width: double.infinity,
-          height: 20,
-        ),
-        Text(
-          "Popular now",
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold
-          )
-        ),
-        SizedBox(
-          width: double.infinity,
-          height: 20,
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 2),
-          padding: const EdgeInsets.all(18),
-          height: 200,
-          child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: <Widget>[
-            Container(
-              width: 180.0,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 4.0,
-                  ),
-                ],
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.white
-            ), 
-          ),
-          SizedBox(
-          width: 20,
-          height: 200,
-          ),
+        body: const HomeMain());
+  }
+}
+
+class HomeMain extends StatefulWidget {
+  const HomeMain({super.key});
+
+  @override
+  State<HomeMain> createState() => _HomeMainState();
+}
+
+class _HomeMainState extends State<HomeMain> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(padding: const EdgeInsets.all(15), children: <Widget>[
+      const Text("Explore EventGather",
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+      const SizedBox(
+        width: double.infinity,
+        height: 20,
+      ),
+      const Text("Popular now",
+          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+      const SizedBox(
+        width: double.infinity,
+        height: 20,
+      ),
+      SizedBox(
+        height: 300,
+        child: ListView(scrollDirection: Axis.horizontal, children: <Widget>[
           Container(
-            width: 180.0,
-               decoration: BoxDecoration(
-                border: new Border.all(
-          color: Colors.grey.withOpacity(0.2), //边框颜色
-          width: 1, //边框宽度
-        ), // 边色与边宽度
+            width: 240.0,
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey.withOpacity(0.2), //边框颜色
+                  width: 1, //边框宽度
+                ), // 边色与边宽度
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 10, //阴影范围
@@ -72,89 +54,199 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.grey.withOpacity(0.2), //阴影颜色
                   ),
                 ],
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white
-            ), 
-              
-            
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white),
             child: Column(
-children: <Widget>[ Image.network("https://www.itying.com/images/flutter/1.png"), const Text('我是一个文本')
-], ),
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                  child: Image.network(
+                      "https://www.itying.com/images/flutter/1.png",
+                      height: 145,
+                      width: double.infinity,
+                      fit: BoxFit.cover),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 3.0, top: 5.0),
+                          child: Text(
+                            'TUE, FEB 6 ~ 17:00',
+                            style: TextStyle(
+                                color: Color.fromRGBO(131, 112, 83, 1),
+                                fontWeight: FontWeight.w500),
+                            textAlign: TextAlign.start,
+                          )),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 3.0),
+                        child: Text(
+                          'We need to talk about We need to talk aboutWe need to talk about asdasdsa',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          //textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: Text(
+                          'Conscious Al',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 13),
+                          //textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Text('Online event',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(118, 118, 119, 1.0),
+                                      fontSize: 13))
+                            ],
+                          ),
+                          Icon(Icons.bookmark_border,
+                              color: Color.fromRGBO(160, 160, 160, 1.0))
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-
-          SizedBox(
-          width: 20,
-          height: 200,
+          const SizedBox(
+            width: 20,
+            height: 200,
+          ),
+          Container(
+            width: 240.0,
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey.withOpacity(0.2), //边框颜色
+                  width: 1, //边框宽度
+                ), // 边色与边宽度
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 10, //阴影范围
+                    spreadRadius: 0.1, //阴影浓度
+                    color: Colors.grey.withOpacity(0.2), //阴影颜色
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white),
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                  child: Image.network(
+                      "https://www.itying.com/images/flutter/1.png",
+                      height: 145,
+                      width: double.infinity,
+                      fit: BoxFit.cover),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 3.0, top: 5.0),
+                          child: Text(
+                            'TUE, FEB 6 ~ 17:00',
+                            style: TextStyle(
+                                color: Color.fromRGBO(131, 112, 83, 1),
+                                fontWeight: FontWeight.w500),
+                            textAlign: TextAlign.start,
+                          )),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 3.0),
+                        child: Text(
+                          'We need to talk about We need to talk aboutWe need to talk about asdasdsa',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          //textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 15.0),
+                        child: Text(
+                          'Conscious Al',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 13),
+                          //textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Text('Online event',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(118, 118, 119, 1.0),
+                                      fontSize: 13))
+                            ],
+                          ),
+                          Icon(Icons.bookmark_border,
+                              color: Color.fromRGBO(160, 160, 160, 1.0))
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+            height: 200,
           ),
           Container(
             width: 180.0,
-               decoration: BoxDecoration(
+            decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey.withOpacity(0.2), //边框颜色
+                  width: 1, //边框宽度
+                ), // 边色与边宽度
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 4.0,
+                    blurRadius: 10, //阴影范围
+                    spreadRadius: 0.1, //阴影浓度
+                    color: Colors.grey.withOpacity(0.2), //阴影颜色
                   ),
                 ],
-              borderRadius: BorderRadius.circular(5),
-              color: Colors.white
-            ), 
-              
-            
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white),
             child: Column(
-children: <Widget>[ Image.network("https://www.itying.com/images/flutter/1.png"), const Text('我是一个文本')
-], ),
+              children: <Widget>[
+                Image.network("https://www.itying.com/images/flutter/1.png"),
+                const Text('我是一个文本')
+              ],
+            ),
           ),
-          ]
-        ),      
-
-        ),
-        
-        Card(
-            shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))
-          ),
-          margin: const EdgeInsets.all(10),
-          child:Column(
-            children: <Widget>[
-              Container(
-                width:300,
-                height:100,
-                child: AspectRatio(
-                aspectRatio: 20/9,
-                child:
-                  Image.network(
-                    "https://www.itying.com/images/flutter/2.png",
-                    fit: BoxFit.cover,
-                  )
-              ), 
-              ),
-             
-              ListTile(
-                leading: ClipOval(
-                child:
-Image.network("https://www.itying.com/images/flutter/2.png",fit:
-BoxFit.cover,height:60,width: 60),
-                    ),
-                    title:const Text("xxxx"),
-                    subtitle:const Text("xxxxxxx"),
-)
-              ]
-          )
-        ),
-
-
-
-        Image.network("https://www.itying.com/images/flutter/1.png"),
-          Container(
-            height: 44,
-            padding:const EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child: const Text(
-'我是一个标题',
-textAlign: TextAlign.center, style: TextStyle(
-                  fontSize: 18,
-                ),
-), ),
-      ]
-    );
+        ]),
+      ),
+      const SizedBox(
+        width: double.infinity,
+        height: 20,
+      ),
+      const Text("Career & Business",
+          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+    ]);
   }
 }
