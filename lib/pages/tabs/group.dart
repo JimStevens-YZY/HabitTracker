@@ -149,7 +149,67 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      child: Stack(
+                        fit: StackFit.loose,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                                "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
+                                height: 200,
+                                width: double.infinity,
+                                fit: BoxFit.cover),
+                          ),
+                          Positioned(
+                              top: 10,
+                              left: 10,
+                              height: 30,
+                              width: 30,
+                              child: Container(
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.white,
+                                ),
+                                child: const Text(
+                                  "1",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16),
+                                ),
+                              )),
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Medway & Maidstone under 40's Social",
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromRGBO(53, 52, 77, 1.0))),
+                          Text(
+                              'A friendly group from local people living in Thamesmead',
+                              style: TextStyle(
+                                  fontSize: 12.0, fontWeight: FontWeight.w400)),
+                          Text(
+                            'Rochester, G5',
+                            style: TextStyle(
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromRGBO(108, 111, 132, 1.0)),
+                          ),
+                        ],
+                      ),
+                    ),
+/*                    ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
                           "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
@@ -170,8 +230,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                           Text(
                               'A friendly group from local people living in Thamesmead',
                               style: TextStyle(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w400)),
+                                  fontSize: 12.0, fontWeight: FontWeight.w400)),
                           Text(
                             'Rochester, G5',
                             style: TextStyle(
@@ -181,7 +240,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                           ),
                         ],
                       ),
-                    ),
+                    ),*/
                     const SizedBox(
                       width: double.infinity,
                       height: 40,
@@ -211,7 +270,8 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                     fit: BoxFit.cover),
                               ),
                               const Padding(
-                                padding: EdgeInsets.only(left: 5, top: 5, bottom: 20),
+                                padding: EdgeInsets.only(
+                                    left: 5, top: 5, bottom: 20),
                                 child: Text("New Groups",
                                     style: TextStyle(
                                         fontSize: 14.0,
@@ -233,7 +293,8 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                     fit: BoxFit.cover),
                               ),
                               const Padding(
-                                padding: EdgeInsets.only(left: 5, top: 5, bottom: 20),
+                                padding: EdgeInsets.only(
+                                    left: 5, top: 5, bottom: 20),
                                 child: Text("Art & Culture",
                                     style: TextStyle(
                                         fontSize: 14.0,
@@ -255,13 +316,14 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                     fit: BoxFit.cover),
                               ),
                               const Padding(
-                                padding: EdgeInsets.only(left: 5, top: 5, bottom: 20),
+                                padding: EdgeInsets.only(
+                                    left: 5, top: 5, bottom: 20),
                                 child: Text("Career & Business",
                                     style: TextStyle(
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.w600,
                                         color:
-                                        Color.fromRGBO(53, 52, 77, 1.0))),
+                                            Color.fromRGBO(53, 52, 77, 1.0))),
                               ),
                             ],
                           ),
@@ -277,21 +339,21 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                     fit: BoxFit.cover),
                               ),
                               const Padding(
-                                padding: EdgeInsets.only(left: 5, top: 5, bottom: 20),
+                                padding: EdgeInsets.only(
+                                    left: 5, top: 5, bottom: 20),
                                 child: Text("Career & Business",
                                     style: TextStyle(
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.w600,
                                         color:
-                                        Color.fromRGBO(53, 52, 77, 1.0))),
+                                            Color.fromRGBO(53, 52, 77, 1.0))),
                               ),
                             ],
                           ),
-
                         ],
                       ),
-                    ),
-                    GridView.count(
+                    )
+/*                    GridView.count(
                       shrinkWrap: true,
                       crossAxisSpacing: 10.0,
                       //水平子 Widget 之间间距
@@ -303,23 +365,6 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                       childAspectRatio: 0.7,
                       //宽度和高度的比例
                       children: _getListData(),
-                    )
-                    /*Container(
-                        height: 100,
-                        width: double.infinity,
-                        child:  GridView.count(
-                          shrinkWrap: true,
-                          crossAxisSpacing: 10.0,
-                          //水平子 Widget 之间间距
-                          mainAxisSpacing: 10.0,
-                          //垂直子 Widget 之间间距
-                          padding: const EdgeInsets.all(10),
-                          crossAxisCount: 2,
-                          //一行的 Widget 数量
-                          childAspectRatio: 0.7,
-                          //宽度和高度的比例
-                          children: _getListData(),
-                        )
                     )*/
                   ],
                 ),

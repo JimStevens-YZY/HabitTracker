@@ -1,9 +1,9 @@
-import 'package:event_gather/pages/tabs/me.dart';
 import 'package:flutter/material.dart';
 import './tabs/home.dart';
 import './tabs/me.dart';
 import './tabs/group.dart';
 import './tabs/events.dart';
+import './tabs/messages.dart';
 
 class Tabs extends StatefulWidget {
   const Tabs({super.key});
@@ -13,12 +13,11 @@ class Tabs extends StatefulWidget {
 }
 
 class _TabsState extends State<Tabs> {
-  var _title = ['Home', 'b', 'c', 'd', 'Me'];
   int _currentIndex = 0;
   final List<Widget> _pages = const [
     HomePage(),
     GroupPage(),
-    HomePage(),
+    MessagesPage(),
     EventsPage(),
     MePage()
   ];
