@@ -75,65 +75,71 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                 width: double.infinity,
                 height: 20,
               ),
-              Container(
-                  height: 120,
-                  child: Flex(direction: Axis.horizontal, children: [
-                    Expanded(
-                        flex: 1,
-                        child: Row(children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                                "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
-                                height: double.infinity,
-                                width: 120,
-                                fit: BoxFit.cover),
-                          ),
-                        ])),
-                    const Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Medway & Maidstone under 40's Social",
-                                  style: TextStyle(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color.fromRGBO(53, 52, 77, 1.0))),
-                              Text(
-                                  'A friendly group from local people living in Thamesmead',
-                                  style: TextStyle(
-                                      fontSize: 12.0,
-                                      fontWeight: FontWeight.w400)),
-                              Text(
-                                'Rochester, G5',
-                                style: TextStyle(
-                                    fontSize: 12.0,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(108, 111, 132, 1.0)),
+              GestureDetector(
+                  onTap: () {
+                    // 点击事件代码
+                    Navigator.pushNamed(context, '/groupDetails');
+                  },
+                  child:Container(
+                      height: 120,
+                      child: Flex(direction: Axis.horizontal, children: [
+                        Expanded(
+                            flex: 1,
+                            child: Row(children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                    "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
+                                    height: double.infinity,
+                                    width: 120,
+                                    fit: BoxFit.cover),
                               ),
-                              Row(
+                            ])),
+                        const Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Icon(Icons.person_sharp,
-                                      size: 15,
-                                      color: Color.fromRGBO(99, 100, 112, 1.0)),
-                                  SizedBox(width: 6),
+                                  Text("Medway & Maidstone under 40's Social",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color.fromRGBO(53, 52, 77, 1.0))),
                                   Text(
-                                    '39 Members',
+                                      'A friendly group from local people living in Thamesmead',
+                                      style: TextStyle(
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.w400)),
+                                  Text(
+                                    'Rochester, G5',
                                     style: TextStyle(
                                         fontSize: 12.0,
                                         fontWeight: FontWeight.w400,
-                                        color: Color.fromRGBO(56, 55, 79, 1.0)),
+                                        color: Color.fromRGBO(108, 111, 132, 1.0)),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.person_sharp,
+                                          size: 15,
+                                          color: Color.fromRGBO(99, 100, 112, 1.0)),
+                                      SizedBox(width: 6),
+                                      Text(
+                                        '39 Members',
+                                        style: TextStyle(
+                                            fontSize: 12.0,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color.fromRGBO(56, 55, 79, 1.0)),
+                                      )
+                                    ],
                                   )
                                 ],
-                              )
-                            ],
-                          ),
-                        )),
-                  ])),
+                              ),
+                            )),
+                      ])),
+              ),
               const SizedBox(
                 width: double.infinity,
                 height: 50,

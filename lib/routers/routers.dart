@@ -1,5 +1,6 @@
 //ios风格的路由
 import 'package:event_gather/pages/tabs/eventDetails.dart';
+import 'package:event_gather/pages/tabs/groupDetails.dart';
 import 'package:flutter/cupertino.dart';
 import '../pages/tabs.dart';
 
@@ -8,6 +9,7 @@ import '../pages/tabs.dart';
 Map routes = {
   "/": (contxt) => const Tabs(),
   '/eventDetails': (contxt) => const EventDetailsPage(),
+  '/groupDetails': (contxt) => const GroupDetailsPage(),
 };
 
 //2、配置onGenerateRoute  固定写法  这个方法也相当于一个中间件，这里可以做权限判断
