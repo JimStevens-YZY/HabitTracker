@@ -63,41 +63,147 @@ class _ChatPageMainState extends State<ChatPageMain>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Stack(
+    return Column(
       children: [
-        Positioned(
-            bottom: 0,
-            left: 0,
+        /*       Positioned(
+          top: 0,
+          left: 0,
+          child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                            "https://www.itying.com/images/flutter/3.png",
+                            height: 48,
+                            width: 48,
+                            fit: BoxFit.cover),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        width: 350,
+                        height: 48,
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('momo',
+                                    style: TextStyle(
+                                        fontSize: 17.0,
+                                        fontWeight: FontWeight.w500,
+                                        color:
+                                            Color.fromRGBO(51, 51, 52, 1.0))),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text('aaaaaaaaaaaaaaa',
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w400,
+                                        color:
+                                            Color.fromRGBO(147, 148, 149, 1.0)))
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        width: 200,
+                        height: 48,
+                        child: const Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('momo',
+                                    style: TextStyle(
+                                        fontSize: 17.0,
+                                        fontWeight: FontWeight.w500,
+                                        color:
+                                            Color.fromRGBO(51, 51, 52, 1.0))),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text('aaaaaaaaaaaaaaa',
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w400,
+                                        color:
+                                            Color.fromRGBO(147, 148, 149, 1.0)))
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                            "https://www.itying.com/images/flutter/3.png",
+                            height: 48,
+                            width: 48,
+                            fit: BoxFit.cover),
+                      ),
+                    ],
+                  ),
+                ],
+              )),
+        ),*/
+        Expanded(
+          child: Text('aaa')
+        ),
+        Container(
             child: Container(
               width: size.width,
               height: 85,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromRGBO(237, 237, 236, 1.0),
               ),
-              child: Row(
-                children: [
-                  Padding(
-                      padding: EdgeInsets.only(bottom: 30, left: 20),
-                      child: Container(
-                        width: 280,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(3.0)),
-                        constraints:
-                            BoxConstraints(minHeight: 30.0, maxHeight: 150.0),
-                        child: TextField(
-                            maxLines: null,
-                            keyboardType: TextInputType.multiline,
-                            decoration: InputDecoration(
-                                hintStyle: TextStyle(fontSize: 14.0),
-                                isDense: true,
-                                contentPadding: EdgeInsets.all(5.0),
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide.none))),
-                      ))
-                ],
-              ),
+              child: SafeArea(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(3),
+                      width: 300,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(3.0)),
+                      constraints: const BoxConstraints(
+                          minHeight: 30.0, maxHeight: 150.0),
+                      child: const TextField(
+                          maxLines: null,
+                          keyboardType: TextInputType.multiline,
+                          decoration: InputDecoration(
+                              hintStyle: TextStyle(fontSize: 14.0),
+                              isDense: true,
+                              contentPadding: EdgeInsets.all(5.0),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide.none))),
+                    ),
+                    Icon(Icons.sentiment_very_satisfied,
+                        size: 30, color: Color.fromRGBO(26, 26, 27, 1.0)),
+                    Icon(Icons.add_circle_outline,
+                        size: 30, color: Color.fromRGBO(26, 26, 27, 1.0))
+                  ],
+                ),
+              )
             ))
       ],
     );
