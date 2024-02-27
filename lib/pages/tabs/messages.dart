@@ -75,41 +75,48 @@ class _MessagesMainState extends State<MessagesMain>
                     backgroundImage: NetworkImage(
                         "https://www.itying.com/images/flutter/3.png"),
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 10),
-                    width: 350,
-                    height: 48,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
+                  GestureDetector(
+                      onTap: () {
+                        // 点击事件代码
+                        Navigator.pushNamed(context, '/chatPage');
+                      },
+                      child:  Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        width: 350,
+                        height: 48,
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('momo',
-                                style: TextStyle(
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(51, 51, 52, 1.0))),
-                            Text('02:34',
-                                style: TextStyle(
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(147, 148, 149, 1.0)))
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('momo',
+                                    style: TextStyle(
+                                        fontSize: 17.0,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color.fromRGBO(51, 51, 52, 1.0))),
+                                Text('02:34',
+                                    style: TextStyle(
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w400,
+                                        color: Color.fromRGBO(147, 148, 149, 1.0)))
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text('aaaaaaaaaaaaaaa',
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w400,
+                                        color: Color.fromRGBO(147, 148, 149, 1.0)))
+                              ],
+                            )
                           ],
                         ),
-                        Row(
-                          children: [
-                            Text('aaaaaaaaaaaaaaa',
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(147, 148, 149, 1.0)))
-                          ],
-                        )
-                      ],
-                    ),
-                  )
+                      )
+                  ),
+
                 ],
               )
             ],
