@@ -7,7 +7,9 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(235, 235, 236, 1.0),
         appBar: AppBar(
+            backgroundColor: Color.fromRGBO(235, 235, 236, 1.0),
             centerTitle: true,
             title: const Text('momo',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
@@ -65,105 +67,6 @@ class _ChatPageMainState extends State<ChatPageMain>
     final size = MediaQuery.of(context).size;
     return Column(
       children: [
-        /*      Positioned(
-          top: 0,
-          left: 0,
-          child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                            "https://www.itying.com/images/flutter/3.png",
-                            height: 48,
-                            width: 48,
-                            fit: BoxFit.cover),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(left: 10),
-                        width: 350,
-                        height: 48,
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('momo',
-                                    style: TextStyle(
-                                        fontSize: 17.0,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Color.fromRGBO(51, 51, 52, 1.0))),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text('aaaaaaaaaaaaaaa',
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w400,
-                                        color:
-                                            Color.fromRGBO(147, 148, 149, 1.0)))
-                              ],
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(left: 10),
-                        width: 200,
-                        height: 48,
-                        child: const Column(
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('momo',
-                                    style: TextStyle(
-                                        fontSize: 17.0,
-                                        fontWeight: FontWeight.w500,
-                                        color:
-                                            Color.fromRGBO(51, 51, 52, 1.0))),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text('aaaaaaaaaaaaaaa',
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w400,
-                                        color:
-                                            Color.fromRGBO(147, 148, 149, 1.0)))
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                            "https://www.itying.com/images/flutter/3.png",
-                            height: 48,
-                            width: 48,
-                            fit: BoxFit.cover),
-                      ),
-                    ],
-                  ),
-                ],
-              )),
-        ),*/
         Expanded(
             child: Padding(
           padding: EdgeInsets.all(10),
@@ -171,7 +74,8 @@ class _ChatPageMainState extends State<ChatPageMain>
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
@@ -180,55 +84,65 @@ class _ChatPageMainState extends State<ChatPageMain>
                         width: 40,
                         fit: BoxFit.cover),
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 10),
-                    width: 180,
-                    height: 48,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('momo',
-                                style: TextStyle(
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color.fromRGBO(51, 51, 52, 1.0))),
-                          ],
+                 Container(
+                   decoration: const BoxDecoration(
+                       color: Color.fromRGBO(255, 255, 255, 1.0),
+                       borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                   margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                   padding: const EdgeInsets.only(
+                       top: 8, bottom: 8, left: 10, right: 10),
+                   child: ConstrainedBox(
+                     constraints: const BoxConstraints(
+                       maxWidth: 200.0,
+                     ),
+                     child: const Text('aaaaaaaaaaaaaaaaa',
+                         softWrap: true,
+                         style: TextStyle(
+                             fontSize: 16.0,
+                             fontWeight: FontWeight.w400,
+                             color: Color.fromRGBO(0, 0, 0, 1.0))),
+                   ),
+                 )
+                 /* Container(
+                      //alignment: Alignment.centerLeft,
+                      decoration: const BoxDecoration(
+                          color: Color.fromRGBO(61, 133, 233, 1.0),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                      padding: const EdgeInsets.only(
+                          top: 8, bottom: 8, left: 10, right: 10),
+                      margin: const EdgeInsets.fromLTRB(50.0, 10.0, 10.0, 10.0),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 200.0,
                         ),
-                        Row(
-                          children: [
-                            Text('aaaaaaaaaaaaaaa',
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color.fromRGBO(147, 148, 149, 1.0)))
-                          ],
-                        )
-                      ],
-                    ),
-                  )
+                        child: const Text('aaaaaaaaaaaaaaaaa',
+                            softWrap: true,
+                            style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromRGBO(255, 255, 255, 1.0))),
+                      )),*/
+                  //const Expanded(child: SizedBox()),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Expanded(child: SizedBox()),
+                  const Expanded(child: SizedBox()),
                   Container(
                       alignment: Alignment.centerRight,
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(43, 77, 182, 1.0),
-                          borderRadius: BorderRadius.all(Radius.circular(5.0))),
-                      padding: EdgeInsets.all(5.0),
-                      margin: EdgeInsets.fromLTRB(50.0, 10.0, 10.0, 10.0),
+                      decoration: const BoxDecoration(
+                          color: Color.fromRGBO(61, 133, 233, 1.0),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                      padding: const EdgeInsets.only(
+                          top: 8, bottom: 8, left: 10, right: 10),
+                      margin: const EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 10.0),
                       child: ConstrainedBox(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxWidth: 200.0,
                         ),
-                        child: Text('aaaaaaaaaaaaaaaaa',
+                        child: const Text('aaaaaaaaaaaaaaaaa',
                             softWrap: true,
                             style: TextStyle(
                                 fontSize: 16.0,
@@ -253,7 +167,7 @@ class _ChatPageMainState extends State<ChatPageMain>
                 width: size.width,
                 height: 85,
                 decoration: const BoxDecoration(
-                  color: Color.fromRGBO(237, 237, 236, 1.0),
+                  color: Color.fromRGBO(240, 240, 241, 1.0),
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),

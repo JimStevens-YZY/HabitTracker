@@ -9,9 +9,10 @@ class MePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double rpx = MediaQuery.of(context).size.width / 750;
     return Scaffold(
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
         body: MeMain(
-      rpx: rpx,
-    ));
+          rpx: rpx,
+        ));
   }
 }
 
@@ -409,47 +410,54 @@ class _MeMainState extends State<MeMain> with TickerProviderStateMixin {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 15, left: 15, right: 15, bottom: 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  margin: const EdgeInsets.only(right: 10),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: const Color.fromRGBO(
-                                          207, 205, 210, 1.0)),
-                                  child: const Icon(
-                                    Icons.add,
-                                    color: Colors.white,
+                        child: GestureDetector(
+                          onTap: () {
+                            // 点击事件代码
+                            Navigator.pushNamed(context, '/startGroupPage');
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                    margin: const EdgeInsets.only(right: 10),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color.fromRGBO(
+                                            207, 205, 210, 1.0)),
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Start a new group',
-                                        style: TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w500,
-                                        )),
-                                    Text('Organize your own events',
-                                        style: TextStyle(
-                                          fontSize: 12.0,
-                                          color: Color.fromRGBO(
-                                              113, 113, 115, 1.0),
-                                          fontWeight: FontWeight.w300,
-                                        )),
-                                  ],
-                                )
-                              ],
-                            ),
-                            const Icon(Icons.chevron_right_rounded,
-                                color: Color.fromRGBO(118, 118, 118, 1.0))
-                          ],
+                                  const Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Start a new group',
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w500,
+                                          )),
+                                      Text('Organize your own events',
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                            color: Color.fromRGBO(
+                                                113, 113, 115, 1.0),
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const Icon(Icons.chevron_right_rounded,
+                                  color: Color.fromRGBO(118, 118, 118, 1.0))
+                            ],
+                          ),
                         ),
                       ),
                       const Padding(
@@ -462,48 +470,55 @@ class _MeMainState extends State<MeMain> with TickerProviderStateMixin {
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 15, left: 15, right: 15, bottom: 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  margin: const EdgeInsets.only(right: 10),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: const Color.fromRGBO(
-                                          207, 205, 210, 1.0)),
-                                  child: const Icon(
-                                    Icons.search_rounded,
-                                    color: Colors.white,
+                        child: GestureDetector(
+                          onTap: () {
+                            // 点击事件代码
+                            Navigator.pushNamed(context, '/discoverGroupPage');
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    height: 40,
+                                    margin: const EdgeInsets.only(right: 10),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: const Color.fromRGBO(
+                                            207, 205, 210, 1.0)),
+                                    child: const Icon(
+                                      Icons.search_rounded,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Discover more groups',
-                                        style: TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w500,
-                                        )),
-                                    Text('Search by your interests',
-                                        style: TextStyle(
-                                          fontSize: 12.0,
-                                          color: Color.fromRGBO(
-                                              113, 113, 115, 1.0),
-                                          fontWeight: FontWeight.w300,
-                                        )),
-                                  ],
-                                )
-                              ],
-                            ),
-                            const Icon(Icons.chevron_right_rounded,
-                                color: Color.fromRGBO(118, 118, 118, 1.0))
-                          ],
+                                  const Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Discover more groups',
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w500,
+                                          )),
+                                      Text('Search by your interests',
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                            color: Color.fromRGBO(
+                                                113, 113, 115, 1.0),
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const Icon(Icons.chevron_right_rounded,
+                                  color: Color.fromRGBO(118, 118, 118, 1.0))
+                            ],
+                          ),
                         ),
+
                       ),
                     ],
                   ));

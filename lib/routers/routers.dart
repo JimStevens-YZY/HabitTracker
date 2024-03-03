@@ -1,7 +1,9 @@
 //ios风格的路由
+import 'package:event_gather/pages/tabs/discoverGroup.dart';
 import 'package:event_gather/pages/tabs/eventDetails.dart';
 import 'package:event_gather/pages/tabs/groupDetails.dart';
 import 'package:event_gather/pages/tabs/chatPage.dart';
+import 'package:event_gather/pages/tabs/startGroup.dart';
 import 'package:flutter/cupertino.dart';
 import '../pages/tabs.dart';
 
@@ -12,6 +14,8 @@ Map routes = {
   '/eventDetails': (contxt) => const EventDetailsPage(),
   '/groupDetails': (contxt) => const GroupDetailsPage(),
   '/chatPage': (contxt) => const ChatPage(),
+  '/startGroupPage': (contxt) => const StartGroupPage(),
+  '/discoverGroupPage': (contxt) => const DiscoverGroupPage()
 };
 
 //2、配置onGenerateRoute  固定写法  这个方法也相当于一个中间件，这里可以做权限判断
