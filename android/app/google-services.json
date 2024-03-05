@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "754916230014",
+    "project_id": "eventgather-80639",
+    "storage_bucket": "eventgather-80639.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754916230014:android:07b50b93be4a448511692f",
+        "android_client_info": {
+          "package_name": "com.example.event_gather"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn-G_NvGhmO6qhFR2NBdruPnUu_9eXAqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
