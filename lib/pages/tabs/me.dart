@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/material.dart';
 
 class MePage extends StatelessWidget {
@@ -76,6 +76,8 @@ class _MeMainState extends State<MeMain> with TickerProviderStateMixin {
       prev_dy = 0;
     });
   }
+
+  final _userInfo = Supabase.instance.client.from('users').select();
 
   @override
   Widget build(BuildContext context) {
@@ -494,7 +496,8 @@ class _MeMainState extends State<MeMain> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   const Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text('Discover more groups',
                                           style: TextStyle(
@@ -518,7 +521,6 @@ class _MeMainState extends State<MeMain> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-
                       ),
                     ],
                   ));
