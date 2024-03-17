@@ -105,7 +105,7 @@ class _MessagesMainState extends State<MessagesMain>
                             ),
                             Row(
                               children: [
-                                Text('aaaaaaaaaaaaaaabbbbbb',
+                                Text('aaaaaaaaaaaaaaabbbbbbcccccc',
                                     style: TextStyle(
                                         fontSize: 16.0,
                                         fontWeight: FontWeight.w400,
