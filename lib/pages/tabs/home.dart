@@ -8,9 +8,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           centerTitle: false,
+          backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
           title: const Text('Home',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         ),
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
         body: const HomeMain());
   }
 }
