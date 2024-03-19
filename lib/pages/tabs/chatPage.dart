@@ -177,7 +177,7 @@ class _ChatPageMainState extends State<ChatPageMain>
                       children: [
                         Container(
                           padding: const EdgeInsets.all(3),
-                          width: 300,
+                          width: size.width * 0.7,
                           height: 40,
                           decoration: BoxDecoration(
                               color: Colors.white,
