@@ -1,5 +1,13 @@
 # This is a generated file; do not edit or check into version control.
 app_links=/Users/jimstevens/.pub-cache/hosted/pub.dev/app_links-3.5.1/
+cloud_firestore=/Users/jimstevens/.pub-cache/hosted/pub.dev/cloud_firestore-4.15.8/
+cloud_firestore_web=/Users/jimstevens/.pub-cache/hosted/pub.dev/cloud_firestore_web-3.10.8/
+desktop_webview_auth=/Users/jimstevens/.pub-cache/hosted/pub.dev/desktop_webview_auth-0.0.15/
+firebase_auth=/Users/jimstevens/.pub-cache/hosted/pub.dev/firebase_auth-4.17.8/
+firebase_auth_web=/Users/jimstevens/.pub-cache/hosted/pub.dev/firebase_auth_web-5.9.8/
+firebase_core=/Users/jimstevens/.pub-cache/hosted/pub.dev/firebase_core-2.27.0/
+firebase_core_web=/Users/jimstevens/.pub-cache/hosted/pub.dev/firebase_core_web-2.11.5/
+firebase_dynamic_links=/Users/jimstevens/.pub-cache/hosted/pub.dev/firebase_dynamic_links-5.4.17/
 gtk=/Users/jimstevens/.pub-cache/hosted/pub.dev/gtk-2.1.0/
 path_provider=/Users/jimstevens/.pub-cache/hosted/pub.dev/path_provider-2.1.2/
 path_provider_android=/Users/jimstevens/.pub-cache/hosted/pub.dev/path_provider_android-2.2.2/

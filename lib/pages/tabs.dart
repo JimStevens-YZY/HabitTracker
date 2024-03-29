@@ -84,22 +84,21 @@ class _TabsState extends State<Tabs> {
           currentIndex: _currentIndex,
           //第几个菜单选中
           type: BottomNavigationBarType.fixed,
-          //如果底部有4个或者4个以上的菜单的时候就需要配置这个参数
+          //如果底部有4个或者4个以上的菜单的时候需要配置这个参数
           onTap: (index) {
             //点击菜单触发的方法
-            //注意
             setState(() {
               _currentIndex = index;
             });
           },
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
-            BottomNavigationBarItem(icon: Icon(Icons.category), label: "分类"),
-            BottomNavigationBarItem(icon: Icon(Icons.message), label: "消息"),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "设置"),
-            BottomNavigationBarItem(icon: Icon(Icons.people), label: "用户")
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.category), label: "Groups"),
+            BottomNavigationBarItem(icon: Icon(Icons.message), label: "Messages"),
+            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Events"),
+            BottomNavigationBarItem(icon: Icon(Icons.people), label: "Me")
           ]),
-      floatingActionButton: Container(
+/*      floatingActionButton: Container(
         height: 60,
         //调整FloatingActionButton的大小
         width: 60,
@@ -120,7 +119,7 @@ class _TabsState extends State<Tabs> {
             }),
       ),
       floatingActionButtonLocation:
-          FloatingActionButtonLocation.centerDocked, //配置浮动按钮的位置
+          FloatingActionButtonLocation.centerDocked, *///配置浮动按钮的位置
     );
   }
 }

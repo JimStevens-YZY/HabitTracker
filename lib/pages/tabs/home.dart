@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart' // new
+    hide EmailAuthProvider, PhoneAuthProvider;
+import 'package:provider/provider.dart';
+import 'app_state.dart';
+import 'widgets.dart';
+import 'authentication.dart';
+import 'guest_book.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -256,6 +263,28 @@ class _HomeMainState extends State<HomeMain> {
       ),
       const Text("Career & Business",
           style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+      Consumer<ApplicationState>(
+        builder: (context, appState, _) => AuthFunc(
+            loggedIn: appState.loggedIn,
+            signOut: () {
+              FirebaseAuth.instance.signOut();
+            }),
+      ),
+      // Modify from here...
+      Consumer<ApplicationState>(
+        builder: (context, appState, _) => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (appState.loggedIn) ...[
+              const Header('Discussion'),
+              GuestBook(
+                addMessage: (message) =>
+                    appState.addMessageToGuestBook(message),
+              ),
+            ],
+          ],
+        ),
+      ),
     ]);
   }
 }
