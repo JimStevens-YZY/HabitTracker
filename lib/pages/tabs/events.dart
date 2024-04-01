@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart'
+    hide EmailAuthProvider, PhoneAuthProvider;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+import 'package:provider/provider.dart';
+import 'app_state.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({Key? key}) : super(key: key);
@@ -28,13 +33,12 @@ class EventsMain extends StatefulWidget {
 class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
   late TabController tabController;
 
-  final _future = Supabase.instance.client.from('signed_events').select();
+/*  final _future = Supabase.instance.client.from('signed_events').select();*/
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(vsync: this, length: 3);
-
+    tabController = TabController(vsync: this, length: 2);
     tabController.addListener(() {
       if (tabController.animation!.value == tabController.index) {
         print(tabController.index); //获取点击或滑动页面的索引值 }
@@ -44,6 +48,8 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference allEvents =
+        FirebaseFirestore.instance.collection('allEvent');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -64,87 +70,80 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
         ),
         Container(
           height: 400,
-          child: FutureBuilder<List<Map<String, dynamic>>>(
-              future: _future,
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                final events = snapshot.data!;
-                return ListView.builder(
-                  padding: const EdgeInsets.all(15),
-                  itemCount: events.length,
-                  itemBuilder: ((context, index) {
-                    final event = events[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("January",
-                            style: TextStyle(
-                                fontSize: 16.0, fontWeight: FontWeight.bold)),
-                        const SizedBox(
-                          width: double.infinity,
-                          height: 10,
-                        ),
-                        Container(
-                            height: 120,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey.withOpacity(0.2), //边框颜色
-                                  width: 1, //边框宽度
-                                ), // 边色与边宽度
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 10, //阴影范围
-                                    spreadRadius: 0.1, //阴影浓度
-                                    color: Colors.grey.withOpacity(0.2), //阴影颜色
-                                  ),
-                                ],
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white),
-                            child: Flex(direction: Axis.horizontal, children: [
-                              Expanded(
-                                  flex: 2,
-                                  child: Padding(
-                                      padding: const EdgeInsets.all(25),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                              event['signed_event_name'] +
-                                                  '-' +
-                                                  event['signed_event_desc'],
-                                              style: const TextStyle(
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w500)),
-                                          const SizedBox(height: 6),
-                                          Text(
+          child: Consumer<ApplicationState>(
+            builder: (context, appState, _) => ListView.builder(
+              padding: const EdgeInsets.all(15),
+              itemCount: appState.allEvent.length,
+              itemBuilder: ((context, index) {
+                final event = appState.allEvent[index];
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("January",
+                        style: TextStyle(
+                            fontSize: 16.0, fontWeight: FontWeight.bold)),
+                    const SizedBox(
+                      width: double.infinity,
+                      height: 10,
+                    ),
+                    Container(
+                        height: 120,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey.withOpacity(0.2),
+                              //边框颜色
+                              width: 1, //边框宽度
+                            ), // 边色与边宽度
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 10, //阴影范围
+                                spreadRadius: 0.1, //阴影浓度
+                                color: Colors.grey.withOpacity(0.2), //阴影颜色
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white),
+                        child: Flex(direction: Axis.horizontal, children: [
+                          Expanded(
+                              flex: 2,
+                              child: Padding(
+                                  padding: const EdgeInsets.all(25),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          event.eventName+ '-' + event.eventDesc,
+                                          style: const TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.w500)),
+                                      const SizedBox(height: 6),
+                                      /* Text(
                                               event['signed_event_date'] +
                                                   ' at ' +
                                                   event['signed_event_time'],
                                               style: const TextStyle(
                                                   fontSize: 12.0,
-                                                  fontWeight: FontWeight.w400))
-                                        ],
-                                      ))),
-                              Expanded(
-                                  flex: 1,
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                        topRight: Radius.circular(10),
-                                        bottomRight: Radius.circular(10)),
-                                    child: Image.network(
-                                        "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
-                                        height: double.infinity,
-                                        fit: BoxFit.cover),
-                                  ))
-                            ]))
-                      ],
-                    );
-                  }),
+                                                  fontWeight: FontWeight.w400))*/
+                                    ],
+                                  ))),
+                          Expanded(
+                              flex: 1,
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(10),
+                                    bottomRight: Radius.circular(10)),
+                                child: Image.network(
+                                    "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
+                                    height: double.infinity,
+                                    fit: BoxFit.cover),
+                              ))
+                        ]))
+                  ],
                 );
               }),
+            )
+          ),
           /*ListView(
             padding: const EdgeInsets.all(15),
             children: [
@@ -204,7 +203,8 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
                         ))
                   ]))
             ],
-          ),*/
+          ),*/ /*
+        )*/
         )
       ],
     );

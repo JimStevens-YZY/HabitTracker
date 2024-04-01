@@ -84,26 +84,26 @@ class _ChatPageMainState extends State<ChatPageMain>
                         width: 40,
                         fit: BoxFit.cover),
                   ),
-                 Container(
-                   decoration: const BoxDecoration(
-                       color: Color.fromRGBO(255, 255, 255, 1.0),
-                       borderRadius: BorderRadius.all(Radius.circular(8.0))),
-                   margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                   padding: const EdgeInsets.only(
-                       top: 8, bottom: 8, left: 10, right: 10),
-                   child: ConstrainedBox(
-                     constraints: const BoxConstraints(
-                       maxWidth: 200.0,
-                     ),
-                     child: const Text('aaaaaaaaaaaaaaaaa',
-                         softWrap: true,
-                         style: TextStyle(
-                             fontSize: 16.0,
-                             fontWeight: FontWeight.w400,
-                             color: Color.fromRGBO(0, 0, 0, 1.0))),
-                   ),
-                 )
-                 /* Container(
+                  Container(
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(255, 255, 255, 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                    margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                    padding: const EdgeInsets.only(
+                        top: 8, bottom: 8, left: 10, right: 10),
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxWidth: 200.0,
+                      ),
+                      child: const Text('aaaaaaaaaaaaaaaaa',
+                          softWrap: true,
+                          style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromRGBO(0, 0, 0, 1.0))),
+                    ),
+                  )
+                  /* Container(
                       //alignment: Alignment.centerLeft,
                       decoration: const BoxDecoration(
                           color: Color.fromRGBO(61, 133, 233, 1.0),

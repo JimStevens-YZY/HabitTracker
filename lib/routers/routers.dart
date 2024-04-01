@@ -1,3 +1,4 @@
+/*
 //ios风格的路由
 import 'package:event_gather/pages/tabs/discoverGroup.dart';
 import 'package:event_gather/pages/tabs/eventDetails.dart';
@@ -38,3 +39,103 @@ var onGenerateRoute = (RouteSettings settings) {
   }
   return null;
 };
+*/
+
+import 'package:event_gather/pages/tabs/discoverGroup.dart';
+import 'package:event_gather/pages/tabs/eventDetails.dart';
+import 'package:event_gather/pages/tabs/groupDetails.dart';
+import 'package:event_gather/pages/tabs/chatPage.dart';
+import 'package:event_gather/pages/tabs/startGroup.dart';
+import 'package:flutter/cupertino.dart';
+import '../pages/tabs.dart';
+import 'package:go_router/go_router.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
+
+final router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const Tabs(),
+      routes: [
+        GoRoute(
+          path: 'sign-in',
+          builder: (context, state) {
+            return SignInScreen(
+              actions: [
+                ForgotPasswordAction(((context, email) {
+                  final uri = Uri(
+                    path: '/sign-in/forgot-password',
+                    queryParameters: <String, String?>{
+                      'email': email,
+                    },
+                  );
+                  context.push(uri.toString());
+                })),
+                AuthStateChangeAction(((context, state) {
+                  final user = switch (state) {
+                  SignedIn state => state.user,
+                  UserCreated state => state.credential.user,
+                  _ => null
+                  };
+                  if (user == null) {
+                  return;
+                  }
+                  if (state is UserCreated) {
+                  user.updateDisplayName(user.email!.split('@')[0]);
+                  }
+                  if (!user.emailVerified) {
+                  user.sendEmailVerification();
+                  const snackBar = SnackBar(
+                  content: Text(
+                  'Please check your email to verify your email address'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                  context.pushReplacement('/');
+                  })),
+              ],
+            );
+          },
+          routes: [
+            GoRoute(
+              path: 'forgot-password',
+              builder: (context, state) {
+                final arguments = state.uri.queryParameters;
+                return ForgotPasswordScreen(
+                  email: arguments['email'],
+                  headerMaxExtent: 200,
+                );
+              },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: 'profile',
+          builder: (context, state) {
+            return ProfileScreen(
+              providers: const [],
+              actions: [
+                SignedOutAction((context) {
+                  context.pushReplacement('/');
+                }),
+              ],
+            );
+          },
+        ),
+        GoRoute(
+          path: "eventDetails",
+          builder: (context, state) => const EventDetailsPage(),
+        ),
+        GoRoute(
+          path: "groupDetails",
+          builder: (context, state) => const GroupDetailsPage(),
+        ),
+        GoRoute(
+          path: "chatPage",
+          builder: (context, state) => const ChatPage(),
+        )
+      ],
+    ),
+  ],
+);

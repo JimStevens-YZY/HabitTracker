@@ -32,7 +32,7 @@ void main() {
   // ...to here.
 }
 
-final _router = GoRouter(
+/*final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
@@ -102,10 +102,15 @@ final _router = GoRouter(
             );
           },
         ),
+        GoRoute(
+          path: "/eventDetails",
+          builder: (context, state) => const EventDetailsPage(),
+
+        )
       ],
     ),
   ],
-);
+);*/
 
 
 class MyApp extends StatelessWidget {
@@ -120,7 +125,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
       ),
       /*initialRoute: "/",*/
-      routerConfig: _router,
+      routerConfig: router,
       /*onGenerateRoute: onGenerateRoute,*/
     );
   }

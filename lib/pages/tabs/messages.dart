@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../res/listData.dart';
 
 class MessagesPage extends StatelessWidget {
@@ -19,6 +20,7 @@ class MessagesPage extends StatelessWidget {
 
 class MessagesMain extends StatefulWidget {
   const MessagesMain({super.key});
+
 
   @override
   State<MessagesMain> createState() => _MessagesMainState();
@@ -80,7 +82,7 @@ class _MessagesMainState extends State<MessagesMain>
                   GestureDetector(
                       onTap: () {
                         // 点击事件代码
-                        Navigator.pushNamed(context, '/chatPage');
+                        GoRouter.of(context).push('/chatPage');
                       },
                       child:  Container(
                         padding: const EdgeInsets.only(left: 10),

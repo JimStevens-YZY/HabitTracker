@@ -218,6 +218,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/fluttertoast-8.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "functions_client",
       "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/functions_client-2.0.0",
       "packageUri": "lib/",
@@ -632,7 +638,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-03-19T21:30:43.431992Z",
+  "generated": "2024-03-31T17:40:44.993487Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }

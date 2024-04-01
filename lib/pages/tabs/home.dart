@@ -6,6 +6,7 @@ import 'app_state.dart';
 import 'widgets.dart';
 import 'authentication.dart';
 import 'guest_book.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class _HomeMainState extends State<HomeMain> {
           GestureDetector(
               onTap: () {
                 // 点击事件代码
-                Navigator.pushNamed(context, '/eventDetails');
+                GoRouter.of(context).push('/eventDetails');
               },
               child: Container(
                 width: 240.0,
@@ -280,6 +281,7 @@ class _HomeMainState extends State<HomeMain> {
               GuestBook(
                 addMessage: (message) =>
                     appState.addMessageToGuestBook(message),
+                messages: appState.guestBookMessages,
               ),
             ],
           ],
