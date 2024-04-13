@@ -73,9 +73,9 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
           child: Consumer<ApplicationState>(
             builder: (context, appState, _) => ListView.builder(
               padding: const EdgeInsets.all(15),
-              itemCount: appState.allEvent.length,
+              itemCount: appState.signedEvent.length,
               itemBuilder: ((context, index) {
-                final event = appState.allEvent[index];
+                final event = appState.signedEvent[index];
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -113,18 +113,16 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
                                     CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                          event.eventName+ '-' + event.eventDesc,
+                                          '${event.signedEventName}-${event.signedEventDesc}',
                                           style: const TextStyle(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.w500)),
                                       const SizedBox(height: 6),
-                                      /* Text(
-                                              event['signed_event_date'] +
-                                                  ' at ' +
-                                                  event['signed_event_time'],
+                                       Text(
+                                              '${event.signedEventDate} at ${event.signedEventTime}',
                                               style: const TextStyle(
                                                   fontSize: 12.0,
-                                                  fontWeight: FontWeight.w400))*/
+                                                  fontWeight: FontWeight.w400))
                                     ],
                                   ))),
                           Expanded(

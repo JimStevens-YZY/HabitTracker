@@ -75,25 +75,25 @@ final router = GoRouter(
                 })),
                 AuthStateChangeAction(((context, state) {
                   final user = switch (state) {
-                  SignedIn state => state.user,
-                  UserCreated state => state.credential.user,
-                  _ => null
+                    SignedIn state => state.user,
+                    UserCreated state => state.credential.user,
+                    _ => null
                   };
                   if (user == null) {
-                  return;
+                    return;
                   }
                   if (state is UserCreated) {
-                  user.updateDisplayName(user.email!.split('@')[0]);
+                    user.updateDisplayName(user.email!.split('@')[0]);
                   }
                   if (!user.emailVerified) {
-                  user.sendEmailVerification();
-                  const snackBar = SnackBar(
-                  content: Text(
-                  'Please check your email to verify your email address'));
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    user.sendEmailVerification();
+                    const snackBar = SnackBar(
+                        content: Text(
+                            'Please check your email to verify your email address'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                   context.pushReplacement('/');
-                  })),
+                })),
               ],
             );
           },
@@ -124,8 +124,11 @@ final router = GoRouter(
           },
         ),
         GoRoute(
-          path: "eventDetails",
-          builder: (context, state) => const EventDetailsPage(),
+          path: "eventDetails/:eventId",
+          builder: (context, state) {
+            final eventId = state.pathParameters['eventId']!;
+            return EventDetailsPage(eventId: eventId);
+          },
         ),
         GoRoute(
           path: "groupDetails",
