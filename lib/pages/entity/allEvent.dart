@@ -6,6 +6,7 @@ class AllEvent {
         required this.eventName,
         required this.eventTime,
         required this.eventLocation,
+        required this.eventCategory,
         required this.eventBg});
 
   final String eventId;
@@ -14,5 +15,6 @@ class AllEvent {
   final String eventName;
   final String eventTime;
   final String eventLocation;
+  final int eventCategory;
   final String eventBg;
 }

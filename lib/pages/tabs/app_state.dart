@@ -70,6 +70,7 @@ class ApplicationState extends ChangeNotifier {
             eventDate: document.data()['eventDate'] as String,
             eventTime: document.data()['eventTime'] as String,
             eventLocation: document.data()['eventLocation'] as String,
+            eventCategory: document.data()['eventCategory'] as int,
             eventBg: document.data()['eventBg'] as String,
           ),
         );

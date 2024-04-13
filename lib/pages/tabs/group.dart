@@ -250,81 +250,87 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                 height: 20,
               ),
               Consumer<ApplicationState>(
-                builder: (context, appState, _) => Column(
-                  children: [
-                    if (appState.allGroups.isNotEmpty) ...[
-                      for (var group in appState.allGroups
-                          .where((element) => element.groupType == 1)
-                          .toList())
-                        GestureDetector(
-                          onTap: () {
-                            GoRouter.of(context).push('/groupDetails');
-                            /*Navigator.pushNamed(context, '/groupDetails');*/
-                          },
-                          child:  Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  height: 200,
-                                  width: double.infinity,
-                                  child: Stack(
-                                    fit: StackFit.loose,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: Image.network(
-                                            group.groupBg,
-                                            height: 200,
-                                            width: double.infinity,
-                                            fit: BoxFit.cover),
-                                      ),
-                                      Positioned(
-                                          top: 10,
-                                          left: 10,
-                                          height: 30,
-                                          width: 30,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(50),
-                                              color: Colors.white,
-                                            ),
-                                            child: const Text(
-                                              "1",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 16),
-                                            ),
-                                          )),
-                                    ],
+                builder: (context, appState, _){
+                  var groups = appState.allGroups.where((element) => element.groupType == 2).toList();
+
+                  return Column(
+                    children: [
+                      if (appState.allGroups.isNotEmpty) ...[
+                        /*for (var group in appState.allGroups
+                            .where((element) => element.groupType == 2)
+                            .toList())*/
+                        for (var index = 0; index < groups.length; index++)
+                          GestureDetector(
+                            onTap: () {
+                              GoRouter.of(context).push('/groupDetails');
+                              /*Navigator.pushNamed(context, '/groupDetails');*/
+                            },
+                            child:  Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 200,
+                                    width: double.infinity,
+                                    child: Stack(
+                                      fit: StackFit.loose,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: Image.network(
+                                              groups[index].groupBg,
+                                              height: 200,
+                                              width: double.infinity,
+                                              fit: BoxFit.cover),
+                                        ),
+                                        Positioned(
+                                            top: 10,
+                                            left: 10,
+                                            height: 30,
+                                            width: 30,
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(50),
+                                                color: Colors.white,
+                                              ),
+                                              child: Text(
+                                                (index+1).toString(),
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 16),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(group.groupName,
+                                  Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(groups[index].groupName,
+                                            style: TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Color.fromRGBO(53, 52, 77, 1.0))),
+                                        Text(
+                                          groups[index].groupDesc,
                                           style: TextStyle(
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Color.fromRGBO(53, 52, 77, 1.0))),
-                                      Text(
-                                          group.groupDesc,
+                                              fontSize: 12.0, fontWeight: FontWeight.w400),maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        Text(
+                                          groups[index].groupLocation,
                                           style: TextStyle(
-                                              fontSize: 12.0, fontWeight: FontWeight.w400)),
-                                      Text(
-                                        group.groupLocation,
-                                        style: TextStyle(
-                                            fontSize: 12.0,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color.fromRGBO(108, 111, 132, 1.0)),
-                                      ),
-                                    ],
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color.fromRGBO(108, 111, 132, 1.0)),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
 /*                    ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
@@ -357,54 +363,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                         ],
                       ),
                     ),*/
-                                const SizedBox(
-                                  width: double.infinity,
-                                  height: 40,
-                                ),
-                                const Text("Browse by categories",
-                                    style: TextStyle(
-                                        fontSize: 16.0, fontWeight: FontWeight.bold)),
-                                const SizedBox(
-                                  width: double.infinity,
-                                  height: 20,
-                                ),
-                                SizedBox(
-                                    width: double.infinity,
-                                    child: Consumer<ApplicationState>(
-                                      builder: (context, appState, _) => Wrap(
-                                        alignment: WrapAlignment.spaceBetween,
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          if (appState.categories.isNotEmpty) ...[
-                                            for (var category in appState.categories)
-                                              Column(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius: BorderRadius.circular(10),
-                                                    child: Image.network(
-                                                        category.categoryBg,
-                                                        height: 140,
-                                                        width: 195,
-                                                        fit: BoxFit.cover),
-                                                  ),
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 5, top: 5, bottom: 20),
-                                                    child: Text(category.categoryName,
-                                                        style: TextStyle(
-                                                            fontSize: 14.0,
-                                                            fontWeight: FontWeight.w600,
-                                                            color: Color.fromRGBO(
-                                                                53, 52, 77, 1.0))),
-                                                  ),
-                                                ],
-                                              ),
-                                          ],
-                                        ],
-                                      ),
-                                    ))
+
 /*                    GridView.count(
                       shrinkWrap: true,
                       crossAxisSpacing: 10.0,
@@ -418,15 +377,64 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                       //宽度和高度的比例
                       children: _getListData(),
                     )*/
+                                ],
+                              ),
+                            ),
+                          )
+                      ],
+                    ],
+                  );
+                }
+
+              ),                  const SizedBox(
+                width: double.infinity,
+                height: 10,
+              ),
+              const Text("Browse by categories",
+                  style: TextStyle(
+                      fontSize: 16.0, fontWeight: FontWeight.bold)),
+              const SizedBox(
+                width: double.infinity,
+                height: 20,
+              ),
+              SizedBox(
+                  width: double.infinity,
+                  child: Consumer<ApplicationState>(
+                    builder: (context, appState, _) => Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        if (appState.categories.isNotEmpty) ...[
+                          for (var category in appState.categories)
+                            Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                      category.categoryBg,
+                                      height: 140,
+                                      width: 195,
+                                      fit: BoxFit.cover),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 5, top: 5, bottom: 20),
+                                  child: Text(category.categoryName,
+                                      style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color.fromRGBO(
+                                              53, 52, 77, 1.0))),
+                                ),
                               ],
                             ),
-                          ),
-                        ),
-                    ],
-                  ],
-                ),
-              ),
-              Container(
+                        ],
+                      ],
+                    ),
+                  ))
+              /*Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -490,7 +498,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-/*                    ClipRRect(
+*//*                    ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
                           "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
@@ -521,7 +529,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                           ),
                         ],
                       ),
-                    ),*/
+                    ),*//*
                     const SizedBox(
                       width: double.infinity,
                       height: 40,
@@ -570,7 +578,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                             ],
                           ),
                         ))
-/*                    GridView.count(
+*//*                    GridView.count(
                       shrinkWrap: true,
                       crossAxisSpacing: 10.0,
                       //水平子 Widget 之间间距
@@ -582,10 +590,10 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                       childAspectRatio: 0.7,
                       //宽度和高度的比例
                       children: _getListData(),
-                    )*/
+                    )*//*
                   ],
                 ),
-              )
+              )*/
             ],
           ),
         ),
