@@ -174,6 +174,7 @@ class _ChatPageMainState extends State<ChatPageMain>
                 height: 85,
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(240, 240, 241, 1.0),
+
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20),

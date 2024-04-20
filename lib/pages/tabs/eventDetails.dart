@@ -22,8 +22,10 @@ class EventDetailsPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             centerTitle: true,
+            backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
             title: const Text('Event',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
         body: EventDetailsMain(eventId: this.eventId));
   }
 }
@@ -234,7 +236,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: Image.network(
                                                     data["groupBg"],
                                                     height: double.infinity,
-                                                    width: 100,
+                                                    width: 95,
                                                     fit: BoxFit.cover),
                                               ),
                                             ])),
@@ -605,9 +607,9 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                 child: Container(
                     width: size.width,
                     height: 85,
-                    /* decoration: const BoxDecoration(
-                  color: Color.fromRGBO(240, 240, 241, 1.0),
-                ),*/
+                     decoration: const BoxDecoration(
+                  color: Color.fromRGBO(255, 255, 255, 1.0),
+                ),
                     child: Padding(
                       padding: EdgeInsets.only(left: 20, right: 20),
                       child: SafeArea(

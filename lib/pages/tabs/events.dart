@@ -48,8 +48,7 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference allEvents =
-        FirebaseFirestore.instance.collection('allEvent');
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -94,7 +93,7 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
                   });
                   DateTime today = DateTime.now();
                   DateTime todayDate = DateTime(today.year, today.month, today.day);
-                  allSignedEvents = allSignedEvents.where((event) => event['dateTime'].isAfter(todayDate) && event['userId'] == FirebaseAuth.instance.currentUser!.uid).toList();
+                  allSignedEvents = allSignedEvents.where((event) => event['dateTime'].isAfter(todayDate) && event['userId'] == FirebaseAuth.instance.currentUser?.uid).toList();
                   return ListView.builder(
                     padding: const EdgeInsets.all(15),
                     itemCount: allSignedEvents.length,
@@ -103,63 +102,67 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            width: double.infinity,
-                            height: 10,
-                          ),
-                          Container(
-                              height: 120,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.grey.withOpacity(0.2),
-                                    //边框颜色
-                                    width: 1, //边框宽度
-                                  ), // 边色与边宽度
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 10, //阴影范围
-                                      spreadRadius: 0.1, //阴影浓度
-                                      color: Colors.grey.withOpacity(0.2), //阴影颜色
-                                    ),
-                                  ],
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.white),
-                              child: Flex(direction: Axis.horizontal, children: [
-                                Expanded(
-                                    flex: 2,
-                                    child: Padding(
-                                        padding: const EdgeInsets.all(25),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '${event['signedEventName']}-${event['signedEventDesc']}',
-                                              style: const TextStyle(
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w500),
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,),
-                                            const SizedBox(height: 6),
-                                            Text(
-                                                '${event['signedEventDate']} at ${event['signedEventTime']}',
+                          if (allSignedEvents.length > 0) ...[
+                            const SizedBox(
+                              width: double.infinity,
+                              height: 10,
+                            ),
+                            Container(
+                                height: 120,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      //边框颜色
+                                      width: 1, //边框宽度
+                                    ), // 边色与边宽度
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 10, //阴影范围
+                                        spreadRadius: 0.1, //阴影浓度
+                                        color: Colors.grey.withOpacity(0.2), //阴影颜色
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white),
+                                child: Flex(direction: Axis.horizontal, children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Padding(
+                                          padding: const EdgeInsets.all(25),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${event['signedEventName']}-${event['signedEventDesc']}',
                                                 style: const TextStyle(
-                                                    fontSize: 12.0,
-                                                    fontWeight: FontWeight.w400))
-                                          ],
-                                        ))),
-                                Expanded(
-                                    flex: 1,
-                                    child: ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                          topRight: Radius.circular(10),
-                                          bottomRight: Radius.circular(10)),
-                                      child: Image.network(
-                                          event['signedEventBg'],
-                                          height: double.infinity,
-                                          fit: BoxFit.cover),
-                                    ))
-                              ]))
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w500),
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,),
+                                              const SizedBox(height: 6),
+                                              Text(
+                                                  '${event['signedEventDate']} at ${event['signedEventTime']}',
+                                                  style: const TextStyle(
+                                                      fontSize: 12.0,
+                                                      fontWeight: FontWeight.w400))
+                                            ],
+                                          ))),
+                                  Expanded(
+                                      flex: 1,
+                                      child: ClipRRect(
+                                        borderRadius: const BorderRadius.only(
+                                            topRight: Radius.circular(10),
+                                            bottomRight: Radius.circular(10)),
+                                        child: Image.network(
+                                            event['signedEventBg'],
+                                            height: double.infinity,
+                                            fit: BoxFit.cover),
+                                      ))
+                                ]))
+                          ] else ...[
+                            Text('aaaaaa')
+                          ]
                         ],
                       );
                     }),
@@ -187,7 +190,7 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
                     });
                     DateTime today = DateTime.now();
                     DateTime todayDate = DateTime(today.year, today.month, today.day);
-                    allSignedEvents = allSignedEvents.where((event) => event['dateTime'].isBefore(todayDate) && event['userId'] == FirebaseAuth.instance.currentUser!.uid).toList();
+                    allSignedEvents = allSignedEvents.where((event) => event['dateTime'].isBefore(todayDate) && event['userId'] == FirebaseAuth.instance.currentUser?.uid).toList();
                     return ListView.builder(
                       padding: const EdgeInsets.all(15),
                       itemCount: allSignedEvents.length,

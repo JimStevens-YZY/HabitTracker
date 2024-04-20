@@ -67,7 +67,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final _future = FirebaseFirestore.instance.collection("categories").get();
+    final size = MediaQuery.of(context).size;
     return ListView(
       children: [
         Padding(
@@ -105,7 +105,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                         borderRadius: BorderRadius.circular(10),
                                         child: Image.network(group.groupBg,
                                             height: double.infinity,
-                                            width: 120,
+                                            width: (size.width - 30) / 3 - 10,
                                             fit: BoxFit.cover),
                                       ),
                                     ])),
@@ -414,7 +414,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                   child: Image.network(
                                       category.categoryBg,
                                       height: 140,
-                                      width: 195,
+                                      width: 0.45 * size.width,
                                       fit: BoxFit.cover),
                                 ),
                                 Padding(
