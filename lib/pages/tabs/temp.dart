@@ -7,6 +7,7 @@ import 'package:permission_handler/permission_handler.dart' as ph;
 import 'package:flutter_sound/flutter_sound.dart';
 import 'markers.dart';
 
+/*
 class FunctionPage extends StatefulWidget {
   @override
   _FunctionPageState createState() => _FunctionPageState();
@@ -250,3 +251,4 @@ class _FunctionPageState extends State<FunctionPage> {
     super.dispose();
   }
 }
+*/
