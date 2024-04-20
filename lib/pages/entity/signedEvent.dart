@@ -4,6 +4,7 @@ class SignedEvent {
     required this.signedEventDesc,
     required this.signedEventName,
     required this.signedEventTime,
+    required this.signedEventBg,
     required this.userId,
   });
 
@@ -11,5 +12,6 @@ class SignedEvent {
   final String signedEventDesc;
   final String signedEventName;
   final String signedEventTime;
+  final String signedEventBg;
   final String userId;
 }

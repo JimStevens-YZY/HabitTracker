@@ -465,9 +465,9 @@ class _HomeMainState extends State<HomeMain> {
             builder: (context, appState, _) => ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(15),
-              itemCount: appState.allEvent.length,
+              itemCount: appState.allEvent.where((element) => element.eventCategory == 4).toList().length,
               itemBuilder: ((context, index) {
-                final event = appState.allEvent[index];
+                final event = appState.allEvent.where((element) => element.eventCategory == 4).toList()[index];
                 return Row(
                   children: [
                     GestureDetector(
@@ -500,7 +500,7 @@ class _HomeMainState extends State<HomeMain> {
                                     topLeft: Radius.circular(10),
                                     topRight: Radius.circular(10)),
                                 child: Image.network(
-                                    "https://www.itying.com/images/flutter/1.png",
+                                    event.eventBg,
                                     height: 145,
                                     width: double.infinity,
                                     fit: BoxFit.cover),
@@ -515,7 +515,7 @@ class _HomeMainState extends State<HomeMain> {
                                         padding: const EdgeInsets.only(
                                             bottom: 3.0, top: 5.0),
                                         child: Text(
-                                          '${event.eventDate}~${event.eventTime}',
+                                          '${event.eventDate} ${event.eventTime}',
                                           style: const TextStyle(
                                               color: Color.fromRGBO(
                                                   131, 112, 83, 1),
@@ -600,9 +600,9 @@ class _HomeMainState extends State<HomeMain> {
             builder: (context, appState, _) => ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(15),
-              itemCount: appState.allEvent.length,
+              itemCount: appState.allEvent.where((element) => element.eventCategory == 5).toList().length,
               itemBuilder: ((context, index) {
-                final event = appState.allEvent[index];
+                final event = appState.allEvent.where((element) => element.eventCategory == 5).toList()[index];
                 return Row(
                   children: [
                     GestureDetector(
@@ -635,7 +635,7 @@ class _HomeMainState extends State<HomeMain> {
                                     topLeft: Radius.circular(10),
                                     topRight: Radius.circular(10)),
                                 child: Image.network(
-                                    "https://www.itying.com/images/flutter/1.png",
+                                    event.eventBg,
                                     height: 145,
                                     width: double.infinity,
                                     fit: BoxFit.cover),
@@ -650,7 +650,7 @@ class _HomeMainState extends State<HomeMain> {
                                         padding: const EdgeInsets.only(
                                             bottom: 3.0, top: 5.0),
                                         child: Text(
-                                          '${event.eventDate}~${event.eventTime}',
+                                          '${event.eventDate} ${event.eventTime}',
                                           style: const TextStyle(
                                               color: Color.fromRGBO(
                                                   131, 112, 83, 1),
@@ -735,9 +735,9 @@ class _HomeMainState extends State<HomeMain> {
             builder: (context, appState, _) => ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(15),
-              itemCount: appState.allEvent.length,
+              itemCount: appState.allEvent.where((element) => element.eventCategory == 6).toList().length,
               itemBuilder: ((context, index) {
-                final event = appState.allEvent[index];
+                final event = appState.allEvent.where((element) => element.eventCategory == 6).toList()[index];
                 return Row(
                   children: [
                     GestureDetector(
@@ -770,7 +770,7 @@ class _HomeMainState extends State<HomeMain> {
                                     topLeft: Radius.circular(10),
                                     topRight: Radius.circular(10)),
                                 child: Image.network(
-                                    "https://www.itying.com/images/flutter/1.png",
+                                    event.eventBg,
                                     height: 145,
                                     width: double.infinity,
                                     fit: BoxFit.cover),
@@ -785,7 +785,7 @@ class _HomeMainState extends State<HomeMain> {
                                         padding: const EdgeInsets.only(
                                             bottom: 3.0, top: 5.0),
                                         child: Text(
-                                          '${event.eventDate}~${event.eventTime}',
+                                          '${event.eventDate} ${event.eventTime}',
                                           style: const TextStyle(
                                               color: Color.fromRGBO(
                                                   131, 112, 83, 1),
@@ -858,15 +858,15 @@ class _HomeMainState extends State<HomeMain> {
               }),
             )),
       ),
-      Consumer<ApplicationState>(
+/*      Consumer<ApplicationState>(
         builder: (context, appState, _) => AuthFunc(
             loggedIn: appState.loggedIn,
             signOut: () {
               FirebaseAuth.instance.signOut();
             }),
-      ),
-      // Modify from here...
-      Consumer<ApplicationState>(
+      ),*/
+
+/*      Consumer<ApplicationState>(
         builder: (context, appState, _) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -880,7 +880,7 @@ class _HomeMainState extends State<HomeMain> {
             ],
           ],
         ),
-      ),
+      ),*/
     ]);
   }
 }

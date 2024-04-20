@@ -131,12 +131,23 @@ final router = GoRouter(
           },
         ),
         GoRoute(
-          path: "groupDetails",
-          builder: (context, state) => const GroupDetailsPage(),
+          path: "groupDetails/:groupId",
+          builder: (context, state) {
+            final groupId = state.pathParameters['groupId']!;
+            return GroupDetailsPage(groupId: groupId);
+          },
         ),
         GoRoute(
           path: "chatPage",
           builder: (context, state) => const ChatPage(),
+        ),
+        GoRoute(
+          path: "discoverGroup",
+          builder: (context, state) => const DiscoverGroupPage(),
+        ),
+        GoRoute(
+          path: "startGroup",
+          builder: (context, state) => const StartGroupPage(),
         )
       ],
     ),

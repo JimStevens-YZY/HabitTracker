@@ -91,6 +91,7 @@ class ApplicationState extends ChangeNotifier {
             signedEventDesc: document.data()['signedEventDesc'] as String,
             signedEventName: document.data()['signedEventName'] as String,
             signedEventTime: document.data()['signedEventTime'] as String,
+            signedEventBg: document.data()['signedEventBg'] as String,
             userId: document.data()['userId'] as String,
           ),
         );
@@ -113,6 +114,7 @@ class ApplicationState extends ChangeNotifier {
             groupName: document.data()['groupName'] as String,
             groupOrganizers: document.data()['groupOrganizers'],
             groupType: document.data()['groupType'] as int,
+            groupId: document.id,
           ),
         );
       }
@@ -201,6 +203,7 @@ class ApplicationState extends ChangeNotifier {
               GuestBookMessage(
                 name: document.data()['name'] as String,
                 message: document.data()['text'] as String,
+                eventId: document.data()['eventId'] as String
               ),
             );
           }
@@ -215,8 +218,8 @@ class ApplicationState extends ChangeNotifier {
     });
   }
 
-  // Add from here...
-  Future<DocumentReference> addMessageToGuestBook(String message) {
+  //留言
+  Future<DocumentReference> addMessageToGuestBook(String message, String eventId) {
     if (!_loggedIn) {
       Fluttertoast.showToast(
           msg: "Must be logged in",
@@ -235,6 +238,34 @@ class ApplicationState extends ChangeNotifier {
       'text': message,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
       'name': FirebaseAuth.instance.currentUser!.displayName,
+      'userId': FirebaseAuth.instance.currentUser!.uid,
+      'eventId': eventId,
+    });
+  }
+
+  //报名参加活动
+  Future<DocumentReference> signUpEvent(String signedEventDate, String signedEventDesc, String signedEventName, String signedEventBg, String signedEventTime) {
+    if (!_loggedIn) {
+      Fluttertoast.showToast(
+          msg: "Must be logged in",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.black,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      throw Exception('Must be logged in');
+    }
+
+    return FirebaseFirestore.instance
+        .collection('signedEvent')
+        .add(<String, dynamic>{
+      "signedEventDate": signedEventDate,
+      "signedEventDesc": signedEventDesc,
+      "signedEventName": signedEventName,
+      "signedEventTime": signedEventTime,
+      "signedEventBg": signedEventBg,
+      'timestamp': DateTime.now().millisecondsSinceEpoch,
       'userId': FirebaseAuth.instance.currentUser!.uid,
     });
   }

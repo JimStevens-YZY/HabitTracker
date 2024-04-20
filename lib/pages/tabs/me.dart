@@ -184,13 +184,13 @@ class _MeMainState extends State<MeMain> {
                                                   )),
                                             ],
                                           ),
-                                          const Column(
+                                          Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              Text('7',
+                                              Text(appState.signedEvent.where((event) => event.userId == FirebaseAuth.instance.currentUser!.uid).toList().length.toString(),
                                                   style: TextStyle(
                                                     fontSize: 24,
                                                     fontWeight: FontWeight.bold,
@@ -345,9 +345,7 @@ class _MeMainState extends State<MeMain> {
                                           bottom: 0),
                                       child: GestureDetector(
                                         onTap: () {
-// 点击事件代码
-                                          Navigator.pushNamed(
-                                              context, '/startGroupPage');
+                                          GoRouter.of(context).push('/startGroup');
                                         },
                                         child: Row(
                                           mainAxisAlignment:
@@ -429,9 +427,7 @@ class _MeMainState extends State<MeMain> {
                                           bottom: 0),
                                       child: GestureDetector(
                                         onTap: () {
-// 点击事件代码
-                                          Navigator.pushNamed(
-                                              context, '/discoverGroupPage');
+                                          GoRouter.of(context).push('/discoverGroup');
                                         },
                                         child: Row(
                                           mainAxisAlignment:

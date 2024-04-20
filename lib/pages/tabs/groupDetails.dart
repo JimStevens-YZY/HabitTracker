@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../res/listData.dart';
+import 'package:firebase_auth/firebase_auth.dart' // new
+    hide
+    EmailAuthProvider,
+    PhoneAuthProvider;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GroupDetailsPage extends StatelessWidget {
-  const GroupDetailsPage({Key? key}) : super(key: key);
+  final String groupId;
+  const GroupDetailsPage({super.key, required this.groupId});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +17,13 @@ class GroupDetailsPage extends StatelessWidget {
             centerTitle: true,
             title: const Text('Group',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
-        body: const GroupDetailsMain());
+        body: GroupDetailsMain(groupId: this.groupId));
   }
 }
 
 class GroupDetailsMain extends StatefulWidget {
-  const GroupDetailsMain({super.key});
+  final String groupId;
+  const GroupDetailsMain({super.key, required this.groupId});
 
   @override
   State<GroupDetailsMain> createState() => _GroupDetailsMainState();
@@ -62,7 +69,202 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    final _future = FirebaseFirestore.instance
+        .collection("groups")
+        .doc(widget.groupId)
+        .get();
+    print(widget.groupId);
+    return FutureBuilder(
+      future: _future,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        final group = snapshot.data!;
+        return ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 200,
+                    width: double.infinity,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                          group["groupBg"],
+                          height: 200,
+                          width: double.infinity,
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5, right: 5),
+                    child: Text(group["groupName"],
+                        style:
+                        const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(children: [
+                    Wrap(
+                      spacing: 2,
+                      runSpacing: 10,
+                      children: <Widget>[
+                        for (int i = 0; i < group["groupOrganizers"].length; i++)
+                          const CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                  /*      CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),
+                        CircleAvatar(
+                          radius: 17,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                                "https://www.itying.com/images/flutter/3.png"),
+                          ),
+                        ),*/
+                      ],
+                    ),
+                  ]),
+                  const SizedBox(height: 10),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('${group["groupOrganizers"].length} Members',
+                          style:
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      Text('${group["groupLocation"]} · Public group',
+                          style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.w500,color: Color.fromRGBO(108, 111, 132, 1.0))),
+                      const SizedBox(height: 10),
+                      Text(
+                          group["groupDesc"],
+                          style:
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const Divider(),
+                  const SizedBox(height: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Text('Organizer',
+                          style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 10),
+                      for (var organizer in group["groupOrganizers"])
+                        Text(organizer,
+                          style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
+                      const SizedBox(height: 10),
+                      const Divider(),
+                      const SizedBox(height: 10),
+                      const Text('Events',
+                          style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
+/*    return ListView(
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
@@ -242,6 +444,6 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
           ),
         ),
       ],
-    );
+    );*/
   }
 }

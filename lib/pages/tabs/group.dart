@@ -91,8 +91,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                           .toList())
                         GestureDetector(
                           onTap: () {
-                            GoRouter.of(context).push('/groupDetails');
-                            /*Navigator.pushNamed(context, '/groupDetails');*/
+                            GoRouter.of(context).push('/groupDetails/${group.groupId}');
                           },
                           child: Container(
                               height: 130,
@@ -122,7 +121,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                         children: [
                                           Text(
                                             group.groupName,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: Color.fromRGBO(
@@ -132,7 +131,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                           ),
                                           Text(
                                             group.groupDesc,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 12.0,
                                                 fontWeight: FontWeight.w400),
                                             maxLines: 2,
@@ -140,7 +139,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                           ),
                                           Text(
                                             group.groupLocation,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 12.0,
                                                 fontWeight: FontWeight.w400,
                                                 color: Color.fromRGBO(
@@ -148,14 +147,14 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                           ),
                                           Row(
                                             children: [
-                                              Icon(Icons.person_sharp,
+                                              const Icon(Icons.person_sharp,
                                                   size: 15,
                                                   color: Color.fromRGBO(
                                                       99, 100, 112, 1.0)),
                                               SizedBox(width: 6),
                                               Text(
                                                 '${group.groupOrganizers.length} Members',
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontSize: 12.0,
                                                     fontWeight: FontWeight.w400,
                                                     color: Color.fromRGBO(
@@ -296,7 +295,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                               ),
                                               child: Text(
                                                 (index+1).toString(),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.w600,
                                                     fontSize: 16),
@@ -311,19 +310,19 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(groups[index].groupName,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: Color.fromRGBO(53, 52, 77, 1.0))),
                                         Text(
                                           groups[index].groupDesc,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 12.0, fontWeight: FontWeight.w400),maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         Text(
                                           groups[index].groupLocation,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.w400,
                                               color: Color.fromRGBO(108, 111, 132, 1.0)),
@@ -419,7 +418,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                       fit: BoxFit.cover),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       left: 5, top: 5, bottom: 20),
                                   child: Text(category.categoryName,
                                       style: TextStyle(

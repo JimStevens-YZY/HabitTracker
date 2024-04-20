@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import './tabs/home.dart';
 import './tabs/me.dart';
 import './tabs/group.dart';
 import './tabs/events.dart';
 import './tabs/messages.dart';
-
+import 'package:go_router/go_router.dart';
+import './tabs/app_state.dart';
+import 'package:firebase_auth/firebase_auth.dart' // new
+    hide
+        EmailAuthProvider,
+        PhoneAuthProvider;
 
 class Tabs extends StatefulWidget {
   const Tabs({super.key});
@@ -27,58 +33,46 @@ class _TabsState extends State<Tabs> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                    flex: 1,
-                    child: UserAccountsDrawerHeader(
-                      accountName: const Text("itying"),
-                      accountEmail: const Text("itying@qq.com"),
-                      otherAccountsPictures: [
-                        Image.network(
-                            "https://www.itying.com/images/flutter/1.png"),
-                        Image.network(
-                            "https://www.itying.com/images/flutter/2.png"),
-                        Image.network(
-                            "https://www.itying.com/images/flutter/3.png"),
-                      ],
-                      currentAccountPicture: const CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://www.itying.com/images/flutter/3.png")),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://www.itying.com/images/flutter/2.png"))),
-                    ))
-              ],
-            ),
-            const ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.people),
+        child: Consumer<ApplicationState>(
+          builder: (context,appState, _)=>Column(
+            children: [
+              SizedBox(height: 70,),
+              ListTile(
+                leading: CircleAvatar(
+                  child: Icon(Icons.person),
+                ),
+                title: Text("Profile"),
+                onTap: () {
+                  context.push('/profile');
+                },
               ),
-              title: Text("个人中心"),
-            ),
-            const Divider(),
-            const ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.settings),
+              const Divider(),
+              Consumer<ApplicationState>(
+                builder: (context, appState, _) {
+                  void signOut() {
+                    FirebaseAuth.instance.signOut();
+                  }
+
+                  return ListTile(
+                      leading: CircleAvatar(
+                        child: Icon(Icons.logout),
+                      ),
+                      title: Text("LogOut"),
+                      onTap: () {
+                        !appState.loggedIn ? context.push('/sign-in') : signOut();
+                      });
+                },
               ),
-              title: Text("系统设置"),
-            ),
-            const Divider(),
-          ],
-        ),
-      ),
-      endDrawer: const Drawer(
-        child: Text("右侧侧边栏"),
+              const Divider(),
+            ],
+          ),
+        )
       ),
       body: _pages[_currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
-          fixedColor: Colors.red,
+          fixedColor: Color.fromRGBO(98, 97, 99, 1.0),
+          unselectedItemColor: Color.fromRGBO(169, 168, 169, 1.0),
           //选中的颜色
           // iconSize:35,           //底部菜单大小
           currentIndex: _currentIndex,
@@ -92,11 +86,14 @@ class _TabsState extends State<Tabs> {
             });
           },
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.category), label: "Groups"),
-            BottomNavigationBarItem(icon: Icon(Icons.message), label: "Messages"),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Events"),
-            BottomNavigationBarItem(icon: Icon(Icons.people), label: "Me")
+            BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.group_work), label: "Groups"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.question_answer), label: "Messages"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.confirmation_number), label: "Events"),
+            BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Me")
           ]),
 /*      floatingActionButton: Container(
         height: 60,
@@ -119,7 +116,7 @@ class _TabsState extends State<Tabs> {
             }),
       ),
       floatingActionButtonLocation:
-          FloatingActionButtonLocation.centerDocked, *///配置浮动按钮的位置
+          FloatingActionButtonLocation.centerDocked, */ //配置浮动按钮的位置
     );
   }
 }

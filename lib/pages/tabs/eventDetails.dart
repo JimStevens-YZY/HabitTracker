@@ -7,23 +7,14 @@ import 'package:firebase_auth/firebase_auth.dart' // new
         PhoneAuthProvider;
 import 'package:provider/provider.dart';
 import 'app_state.dart';
-import 'widgets.dart';
-import 'authentication.dart';
-import 'guest_book.dart';
-import 'package:go_router/go_router.dart';
-
-
-import 'package:firebase_auth/firebase_auth.dart'
-    hide EmailAuthProvider, PhoneAuthProvider;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
-import 'package:flutter/material.dart';
-import '../../firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final String eventId;
+
   const EventDetailsPage({super.key, required this.eventId});
 
   @override
@@ -33,12 +24,13 @@ class EventDetailsPage extends StatelessWidget {
             centerTitle: true,
             title: const Text('Event',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
-        body: EventDetailsMain(eventId:this.eventId));
+        body: EventDetailsMain(eventId: this.eventId));
   }
 }
 
 class EventDetailsMain extends StatefulWidget {
   final String eventId;
+
   const EventDetailsMain({super.key, required this.eventId});
 
   @override
@@ -51,9 +43,6 @@ class _EventDetailsMainState extends State<EventDetailsMain>
 
   final _formKey = GlobalKey<FormState>(debugLabel: '_GuestBookState');
   final _controller = TextEditingController();
-
-
-
 
   @override
   void initState() {
@@ -89,10 +78,15 @@ class _EventDetailsMainState extends State<EventDetailsMain>
     return tempList.toList();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    final _future = FirebaseFirestore.instance.collection("allEvents").doc(widget.eventId).get();
+    final _future = FirebaseFirestore.instance
+        .collection("allEvents")
+        .doc(widget.eventId)
+        .get();
+
+    CollectionReference groups =
+        FirebaseFirestore.instance.collection('groups');
 
 /*    final db = FirebaseFirestore.instance;
     var data;
@@ -108,19 +102,19 @@ class _EventDetailsMainState extends State<EventDetailsMain>
     final size = MediaQuery.of(context).size;
     return FutureBuilder(
       future: _future,
-      builder: (context, snapshot){
+      builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
         }
         final event = snapshot.data!;
-        print('${event['eventName']}adsad');
         return Column(
           children: [
             Expanded(
               child: ListView(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                    padding:
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -129,8 +123,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                           width: double.infinity,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                                event['eventBg'],
+                            child: Image.network(event['eventBg'],
                                 height: 200,
                                 width: double.infinity,
                                 fit: BoxFit.cover),
@@ -138,9 +131,8 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                         ),
                         const SizedBox(height: 10),
                         Padding(
-                          padding: EdgeInsets.only(left: 5, right: 5),
-                          child: Text(
-                              event['eventName'],
+                          padding: const EdgeInsets.only(left: 5, right: 5),
+                          child: Text(event['eventName'],
                               style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                         ),
@@ -155,55 +147,57 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                     padding: EdgeInsets.only(top: 3),
                                     child: Icon(Icons.calendar_today_outlined,
                                         size: 20,
-                                        color: Color.fromRGBO(99, 100, 112, 1.0))),
+                                        color:
+                                            Color.fromRGBO(99, 100, 112, 1.0))),
                                 const SizedBox(width: 10),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(event['eventDate'],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600)),
                                     Text('${event['eventTime']} GMT',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w400))
                                   ],
                                 )
                               ],
                             ),
-                            Icon(Icons.chevron_right_rounded,
-                                size: 30, color: Color.fromRGBO(99, 100, 112, 1.0)),
+                            const Icon(Icons.chevron_right_rounded,
+                                size: 30,
+                                color: Color.fromRGBO(99, 100, 112, 1.0)),
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                         Row(
                           children: [
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
+                                const Padding(
                                     padding: EdgeInsets.only(top: 3),
                                     child: Icon(Icons.camera,
                                         size: 20,
-                                        color: Color.fromRGBO(99, 100, 112, 1.0))),
+                                        color:
+                                            Color.fromRGBO(99, 100, 112, 1.0))),
                                 SizedBox(width: 10),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
                                       width: 300,
-                                      child: Text(event['eventLocation'],
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600),
+                                      child: Text(
+                                        event['eventLocation'],
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                       ),
-
                                     ),
-
-                                    Text('Link visible for attendees',
+                                    const Text('Link visible for attendees',
                                         style: TextStyle(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w400))
@@ -214,7 +208,90 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                           ],
                         ),
                         const SizedBox(height: 25),
-                        Container(
+                        const Text('From Group',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 10),
+                        FutureBuilder<DocumentSnapshot>(
+                          future: groups.doc(event['groupId']).get(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<DocumentSnapshot> snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              Map<String, dynamic> data =
+                                  snapshot.data!.data() as Map<String, dynamic>;
+                              return Container(
+                                  height: 100,
+                                  child: Flex(
+                                      direction: Axis.horizontal,
+                                      children: [
+                                        Expanded(
+                                            flex: 1,
+                                            child: Row(children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                child: Image.network(
+                                                    data["groupBg"],
+                                                    height: double.infinity,
+                                                    width: 100,
+                                                    fit: BoxFit.cover),
+                                              ),
+                                            ])),
+                                        Expanded(
+                                            flex: 3,
+                                            child: Padding(
+                                              padding:
+                                                  EdgeInsets.only(left: 10),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(data["groupName"],
+                                                      style: const TextStyle(
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: Color.fromRGBO(
+                                                              53, 52, 77, 1.0)),
+                                                      maxLines: 2,
+                                                      overflow: TextOverflow
+                                                          .ellipsis),
+                                                  Text(
+                                                    data["groupDesc"],
+                                                    style: const TextStyle(
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                    maxLines: 2,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                                  Text(
+                                                    data["groupLocation"],
+                                                    style: const TextStyle(
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Color.fromRGBO(
+                                                            108,
+                                                            111,
+                                                            132,
+                                                            1.0)),
+                                                  ),
+                                                ],
+                                              ),
+                                            )),
+                                      ]));
+                            }
+
+                            return Text("loading");
+                          },
+                        ),
+                        /*Container(
                             height: 100,
                             child: Flex(direction: Axis.horizontal, children: [
                               Expanded(
@@ -235,10 +312,12 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                     padding: EdgeInsets.only(left: 10),
                                     child: Column(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text("Medway & Maidstone under 40's Social",
+                                        Text(
+                                            "Medway & Maidstone under 40's Social",
                                             style: TextStyle(
                                                 fontSize: 16.0,
                                                 fontWeight: FontWeight.w600,
@@ -260,29 +339,31 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                       ],
                                     ),
                                   )),
-                            ])),
+                            ])),*/
                         const SizedBox(height: 25),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('About',
+                            const Text('About',
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold)),
                             const SizedBox(height: 10),
-                            Text(
-                                event['eventDesc'],
-                                style: TextStyle(
+                            Text(event['eventDesc'],
+                                style: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w400)),
                             const SizedBox(height: 25),
                             Row(
                               children: [
-                                Text('Date: ',
+                                const Text('Date: ',
                                     style: TextStyle(
-                                        fontSize: 18, fontWeight: FontWeight.bold)),
-                                Text('${event['eventDate']} ${event['eventTime']}',
-                                    style: TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.w400)),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold)),
+                                Text(
+                                    '${event['eventDate']} ${event['eventTime']}',
+                                    style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400)),
                               ],
                             ),
                           ],
@@ -297,16 +378,18 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                   flex: 1,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text('Hosting(1)',
                                                 style: TextStyle(
                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.bold))
+                                                    fontWeight:
+                                                        FontWeight.bold))
                                           ]),
                                       SizedBox(height: 10),
                                       Wrap(
@@ -343,19 +426,20 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                   child: Padding(
                                       padding: const EdgeInsets.only(left: 10),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           const Row(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Text('Going(27)',
                                                     style: TextStyle(
                                                         fontSize: 15,
                                                         fontWeight:
-                                                        FontWeight.bold))
+                                                            FontWeight.bold))
                                               ]),
                                           const SizedBox(height: 10),
                                           Wrap(
@@ -416,19 +500,21 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 alignment: Alignment.center,
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
-                                                      color: const Color.fromRGBO(
-                                                          255, 255, 255, 1),
+                                                      color:
+                                                          const Color.fromRGBO(
+                                                              255, 255, 255, 1),
                                                       width: 2),
                                                   borderRadius:
-                                                  BorderRadius.circular(50),
-                                                  color: Color.fromRGBO(
+                                                      BorderRadius.circular(50),
+                                                  color: const Color.fromRGBO(
                                                       196, 192, 192, 1.0),
                                                 ),
                                                 child: const Text(
                                                   "+4",
                                                   style: TextStyle(
                                                       color: Colors.white,
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize: 14),
                                                 ),
                                               )
@@ -447,7 +533,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                     fontSize: 18, fontWeight: FontWeight.bold)),
                             const SizedBox(height: 10),
                             Text(event['eventLocation'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w500)),
                             /*const Text('Western Gateway',
                                 style: TextStyle(
@@ -459,7 +545,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: Image.network(
-                                    "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
+                                    "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/oss-img-path/location.jpeg",
                                     height: 200,
                                     width: double.infinity,
                                     fit: BoxFit.cover),
@@ -467,41 +553,45 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                             ),
                             const Divider(),
                             const SizedBox(height: 10),
-                            const Text('Photos',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold)),
-                            const Divider(),
-                            const SizedBox(height: 10),
                             const Text('Discussion',
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold)),
                             const SizedBox(height: 10),
                             Consumer<ApplicationState>(
-                              builder: (context, appState, _) => Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  if (appState.loggedIn) ...[
-                                    for (var message in appState.guestBookMessages)
-                                      Row(
-                                        children: [
-                                          Text('${message.name}: ',
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500)),
-                                          Text(message.message,
-                                              style: const TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w400))
-                                        ],
-                                      )
-                                  ] else if (!appState.loggedIn) ...[
-                                    const Text('Please Log in to see discussion',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400)),
-                                  ]
-                                ],
-                              ),
+                              builder: (context, appState, _) {
+                                var messages =
+                                    appState.guestBookMessages.where((element) {
+                                  return element.eventId == widget.eventId;
+                                }).toList();
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (appState.loggedIn) ...[
+                                      for (var message in messages)
+                                        Row(
+                                          children: [
+                                            Text('${message.name}: ',
+                                                style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w500)),
+                                            Text(message.message,
+                                                style: const TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.w400))
+                                          ],
+                                        )
+                                    ] else if (!appState.loggedIn) ...[
+                                      const Text(
+                                          'Please Log in to see discussion',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400)),
+                                    ]
+                                  ],
+                                );
+                              },
                             ),
                           ],
                         )
@@ -522,75 +612,98 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                       padding: EdgeInsets.only(left: 20, right: 20),
                       child: SafeArea(
                           child: Form(
-                            key: _formKey,
-                            child: Consumer<ApplicationState>(
-                              builder: (context, appState, _) => Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.all(3),
-                                    width: size.width * 0.45,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(3.0)),
-                                    constraints: const BoxConstraints(
-                                        minHeight: 30.0, maxHeight: 150.0),
-                                    child: const TextField(
-                                      maxLines: null,
-                                      keyboardType: TextInputType.multiline,
-                                      decoration: InputDecoration(
-                                        hintStyle: TextStyle(fontSize: 14.0),
-                                        isDense: true,
-                                        contentPadding: EdgeInsets.all(5.0),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(color: Colors.grey),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide:
+                        key: _formKey,
+                        child: Consumer<ApplicationState>(
+                          builder: (context, appState, _) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(3),
+                                width: size.width * 0.45,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(3.0)),
+                                constraints: const BoxConstraints(
+                                    minHeight: 30.0, maxHeight: 150.0),
+                                child: TextFormField(
+                                  controller: _controller,
+                                  maxLines: null,
+                                  keyboardType: TextInputType.multiline,
+                                  decoration: const InputDecoration(
+                                    hintStyle: TextStyle(fontSize: 14.0),
+                                    isDense: true,
+                                    contentPadding: EdgeInsets.all(5.0),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.grey),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide:
                                           BorderSide(color: Colors.deepPurple),
-                                        ),
-                                      ),
                                     ),
                                   ),
-                                  OutlinedButton(
-                                    onPressed: () async {
-                                      if (_formKey.currentState!.validate()) {
-                                        await appState
-                                            .addMessageToGuestBook(_controller.text);
-                                        _controller.clear();
-                                      }
-                                    },
-                                    child: Text('Send'),
-                                    style: OutlinedButton.styleFrom(
-                                        minimumSize: Size(size.width * 0.2, 35),
-                                        side: const BorderSide(
-                                            color: Color.fromRGBO(171, 168, 174, 1)),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                        )),
-                                  ),
-                                  OutlinedButton(
-                                    onPressed: () async {
-                                      if (_formKey.currentState!.validate()) {
-                                        await appState
-                                            .addMessageToGuestBook(_controller.text);
-                                        _controller.clear();
-                                      }
-                                    },
-                                    child: Text('RSVP'),
-                                    style: OutlinedButton.styleFrom(
-                                        minimumSize: Size(size.width * 0.2, 35),
-                                        side: const BorderSide(
-                                            color: Color.fromRGBO(171, 168, 174, 1)),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10.0),
-                                        )),
-                                  )
-                                ],
+                                ),
                               ),
-                            ),
-                          )),
+                              OutlinedButton(
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate() &&
+                                      _controller.text.isNotEmpty) {
+                                    await appState.addMessageToGuestBook(
+                                        _controller.text, widget.eventId);
+                                    _controller.clear();
+                                  } else if (_controller.text.isEmpty) {
+                                    Fluttertoast.showToast(
+                                        msg: "Enter your message to continue",
+                                        toastLength: Toast.LENGTH_SHORT,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: Colors.black,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0);
+                                  }
+                                },
+                                child: Text('Send'),
+                                style: OutlinedButton.styleFrom(
+                                    minimumSize: Size(size.width * 0.2, 35),
+                                    side: const BorderSide(
+                                        color:
+                                            Color.fromRGBO(171, 168, 174, 1)),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    )),
+                              ),
+                              OutlinedButton(
+                                onPressed: () async {
+                                  await appState.signUpEvent(
+                                      event['eventDate'],
+                                      event['eventDesc'],
+                                      event['eventName'],
+                                      event['eventBg'],
+                                      event['eventTime']);
+                                  Fluttertoast.showToast(
+                                      msg: "Signed Up Successfully",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.black,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0);
+                                },
+                                child: Text('RSVP'),
+                                style: OutlinedButton.styleFrom(
+                                    minimumSize: Size(size.width * 0.2, 35),
+                                    side: const BorderSide(
+                                        color:
+                                            Color.fromRGBO(171, 168, 174, 1)),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    )),
+                              )
+                            ],
+                          ),
+                        ),
+                      )),
                     )))
           ],
         );

@@ -6,6 +6,7 @@ class AllGroups {
     required this.groupName,
     required this.groupOrganizers,
     required this.groupType,
+    required this.groupId,
   });
 
   final String groupBg;
@@ -14,4 +15,5 @@ class AllGroups {
   final String groupName;
   final List<dynamic> groupOrganizers;
   final int groupType;
+  final String groupId;
 }
