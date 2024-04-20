@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import '../../res/listData.dart';
 import 'package:firebase_auth/firebase_auth.dart' // new
     hide
-    EmailAuthProvider,
-    PhoneAuthProvider;
+        EmailAuthProvider,
+        PhoneAuthProvider;
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GroupDetailsPage extends StatelessWidget {
   final String groupId;
+
   const GroupDetailsPage({super.key, required this.groupId});
 
   @override
@@ -23,6 +24,7 @@ class GroupDetailsPage extends StatelessWidget {
 
 class GroupDetailsMain extends StatefulWidget {
   final String groupId;
+
   const GroupDetailsMain({super.key, required this.groupId});
 
   @override
@@ -73,6 +75,12 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
         .collection("groups")
         .doc(widget.groupId)
         .get();
+
+    final _events = FirebaseFirestore.instance
+        .collection('allEvents')
+        .where('groupId', isEqualTo: widget.groupId)
+        .get();
+
     print(widget.groupId);
     return FutureBuilder(
       future: _future,
@@ -92,8 +100,7 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
                     width: double.infinity,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                          group["groupBg"],
+                      child: Image.network(group["groupBg"],
                           height: 200,
                           width: double.infinity,
                           fit: BoxFit.cover),
@@ -103,26 +110,31 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
                   Padding(
                     padding: const EdgeInsets.only(left: 5, right: 5),
                     child: Text(group["groupName"],
-                        style:
-                        const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                   const SizedBox(height: 10),
-                  Row(children: [
-                    Wrap(
-                      spacing: 2,
-                      runSpacing: 10,
-                      children: <Widget>[
-                        for (int i = 0; i < group["groupOrganizers"].length; i++)
-                          const CircleAvatar(
-                          radius: 17,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 15,
-                            backgroundImage: NetworkImage(
-                                "https://www.itying.com/images/flutter/3.png"),
-                          ),
-                        ),
-                  /*      CircleAvatar(
+                  Container(
+                      height: 40,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [Wrap(
+                          spacing: 2,
+                          runSpacing: 10,
+                          children: <Widget>[
+                            for (int i = 0;
+                            i < group["groupOrganizers"].length;
+                            i++)
+                              CircleAvatar(
+                                radius: 17,
+                                backgroundColor: Colors.white,
+                                child: CircleAvatar(
+                                  radius: 15,
+                                  backgroundImage: NetworkImage(
+                                      userAvatar[i]),
+                                ),
+                              ),
+                            /*      CircleAvatar(
                           radius: 17,
                           backgroundColor: Colors.white,
                           child: CircleAvatar(
@@ -213,25 +225,27 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
                                 "https://www.itying.com/images/flutter/3.png"),
                           ),
                         ),*/
-                      ],
-                    ),
-                  ]),
+                          ],
+                        )],
+                      )
+                  ),
                   const SizedBox(height: 10),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('${group["groupOrganizers"].length} Members',
-                          style:
-                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w500)),
                       Text('${group["groupLocation"]} · Public group',
-                          style:
-                          const TextStyle(fontSize: 14, fontWeight: FontWeight.w500,color: Color.fromRGBO(108, 111, 132, 1.0))),
+                          style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color.fromRGBO(108, 111, 132, 1.0))),
                       const SizedBox(height: 10),
-                      Text(
-                          group["groupDesc"],
-                          style:
-                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                      Text(group["groupDesc"],
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w400)),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -241,20 +255,227 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Text('Organizer',
-                          style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 10),
-                      for (var organizer in group["groupOrganizers"])
-                        Text(organizer,
-                          style:
-                          const TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
+                      const Text('Members',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 160,
+                        child:  ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              for (var index = 0; index < group["groupOrganizers"].length; index++)
+                                Row(
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                          child: Image.network(
+                                              userAvatar[index],
+                                              height: 120,
+                                              width: 120,
+                                              fit: BoxFit.cover),
+                                        ),
+                                        SizedBox(
+                                          width: 120,
+                                          child:  Text(
+                                            group["groupOrganizers"][index],
+                                            style: const TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.w600,
+                                                color:
+                                                Color.fromRGBO(53, 52, 77, 1.0)),
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        Text(
+                                          index == 0 ? 'Group Host' : 'Group Member',
+                                          style: const TextStyle(
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color.fromRGBO(
+                                                  108, 111, 132, 1.0)),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(width: 15,)
+                                  ],)
+
+      /*                        for (var organizer in group["groupOrganizers"])
+                                Row(
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                          child: Image.network(
+                                              "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/oss-img-path/userAvatar.jpg",
+                                              height: 120,
+                                              width: 120,
+                                              fit: BoxFit.cover),
+                                        ),
+                                        Text(
+                                          organizer,
+                                          style: const TextStyle(
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w600,
+                                              color:
+                                              Color.fromRGBO(53, 52, 77, 1.0)),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        Text(
+                                          "Event host",
+                                          style: const TextStyle(
+                                              fontSize: 12.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color.fromRGBO(
+                                                  108, 111, 132, 1.0)),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(width: 15,)
+                                  ],)*/
+
+
+                            ]
+                        ),
+                      ),
                       const SizedBox(height: 10),
                       const Divider(),
                       const SizedBox(height: 10),
                       const Text('Events',
-                          style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      FutureBuilder(
+                          future: _events,
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                            final events = snapshot.data!;
+
+                            return Column(
+                              children: [
+                                for (var event in events.docs)
+                                  Container(
+                                      height: 130,
+                                      padding:
+                                          const EdgeInsets.only(bottom: 10),
+                                      child: Flex(
+                                          direction: Axis.horizontal,
+                                          children: [
+                                            Expanded(
+                                                flex: 1,
+                                                child: Row(children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.network(
+                                                        event.data()['eventBg'],
+                                                        height: double.infinity,
+                                                        width: 120,
+                                                        fit: BoxFit.cover),
+                                                  ),
+                                                ])),
+                                            Expanded(
+                                                flex: 2,
+                                                child: Padding(
+                                                  padding:
+                                                      EdgeInsets.only(left: 10),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        event.data()[
+                                                            'eventName'],
+                                                        style: const TextStyle(
+                                                            fontSize: 16.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    53,
+                                                                    52,
+                                                                    77,
+                                                                    1.0)),
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                      Text(
+                                                        event.data()[
+                                                            'eventDesc'],
+                                                        style: const TextStyle(
+                                                            fontSize: 12.0,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                      Text(
+                                                        event.data()[
+                                                            'eventLocation'],
+                                                        style: const TextStyle(
+                                                            fontSize: 12.0,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    108,
+                                                                    111,
+                                                                    132,
+                                                                    1.0)),
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                      Text(
+                                                        "${event.data()['eventDate']} ${event.data()['eventTime']}",
+                                                        style: const TextStyle(
+                                                            fontSize: 12.0,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    108,
+                                                                    111,
+                                                                    132,
+                                                                    1.0)),
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )),
+                                          ]))
+                              ],
+                            );
+                          }),
                     ],
                   )
                 ],

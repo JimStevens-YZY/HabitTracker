@@ -33,6 +33,23 @@ List listData=[
           "title": 'white-dragon',
           "author": 'Mohamed Chahin',
           "imageUrl": 'https://www.itying.com/images/flutter/7.png',
-      }      
+      }
 
+];
+
+List userAvatar =[
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar1.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar2.jpeg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar3.jpeg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar4.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar5.jpeg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar6.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar7.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar8.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar9.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar10.jpeg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar11.jpeg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar12.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar13.jpg',
+  'https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar14.jpg',
 ];

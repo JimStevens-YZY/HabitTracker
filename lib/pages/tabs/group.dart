@@ -261,7 +261,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                         for (var index = 0; index < groups.length; index++)
                           GestureDetector(
                             onTap: () {
-                              GoRouter.of(context).push('/groupDetails');
+                              GoRouter.of(context).push('/groupDetails/${groups[index].groupId}');
                               /*Navigator.pushNamed(context, '/groupDetails');*/
                             },
                             child:  Container(

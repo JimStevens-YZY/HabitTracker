@@ -405,7 +405,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                             child: CircleAvatar(
                                               radius: 15,
                                               backgroundImage: NetworkImage(
-                                                  "https://www.itying.com/images/flutter/3.png"),
+                                                  "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar1.jpg"),
                                             ),
                                           ),
                                           CircleAvatar(
@@ -414,7 +414,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                             child: CircleAvatar(
                                               radius: 15,
                                               backgroundImage: NetworkImage(
-                                                  "https://www.itying.com/images/flutter/3.png"),
+                                                  "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar2.jpeg"),
                                             ),
                                           ),
                                         ],
@@ -455,7 +455,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: CircleAvatar(
                                                   radius: 15,
                                                   backgroundImage: NetworkImage(
-                                                      "https://www.itying.com/images/flutter/3.png"),
+                                                      "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar3.jpeg"),
                                                 ),
                                               ),
                                               const CircleAvatar(
@@ -464,7 +464,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: CircleAvatar(
                                                   radius: 15,
                                                   backgroundImage: NetworkImage(
-                                                      "https://www.itying.com/images/flutter/3.png"),
+                                                      "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar4.jpg"),
                                                 ),
                                               ),
                                               const CircleAvatar(
@@ -473,7 +473,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: CircleAvatar(
                                                   radius: 15,
                                                   backgroundImage: NetworkImage(
-                                                      "https://www.itying.com/images/flutter/3.png"),
+                                                      "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar5.jpeg"),
                                                 ),
                                               ),
                                               const CircleAvatar(
@@ -482,7 +482,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: CircleAvatar(
                                                   radius: 15,
                                                   backgroundImage: NetworkImage(
-                                                      "https://www.itying.com/images/flutter/3.png"),
+                                                      "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar6.jpg"),
                                                 ),
                                               ),
                                               const CircleAvatar(
@@ -491,7 +491,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: CircleAvatar(
                                                   radius: 15,
                                                   backgroundImage: NetworkImage(
-                                                      "https://www.itying.com/images/flutter/3.png"),
+                                                      "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar7.jpg"),
                                                 ),
                                               ),
                                               Container(
@@ -510,12 +510,12 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                       196, 192, 192, 1.0),
                                                 ),
                                                 child: const Text(
-                                                  "+4",
+                                                  "+22",
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.w600,
-                                                      fontSize: 14),
+                                                      fontSize: 13),
                                                 ),
                                               )
                                             ],
@@ -693,9 +693,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                 child: Text('RSVP'),
                                 style: OutlinedButton.styleFrom(
                                     minimumSize: Size(size.width * 0.2, 35),
-                                    side: const BorderSide(
-                                        color:
-                                            Color.fromRGBO(171, 168, 174, 1)),
+                                    side: const BorderSide(color: Color.fromRGBO(171, 168, 174, 1)),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                     )),
