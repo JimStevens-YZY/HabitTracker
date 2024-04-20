@@ -10,6 +10,7 @@ class StartGroupPage extends StatelessWidget {
             centerTitle: true,
             title: const Text('Start a group',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
         body: const StartGroupMain());
   }
 }

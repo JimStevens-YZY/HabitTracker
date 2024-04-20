@@ -1,474 +1,252 @@
-ListView(
-children: [
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:location/location.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'package:permission_handler/permission_handler.dart' as ph;
+import 'package:flutter_sound/flutter_sound.dart';
+import 'markers.dart';
 
-Stack(
-children: <Widget>[
-Column(
-children: <Widget>[
-Image.network(
-"https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/zust-lcy-path/20230406/2023040622447.jpg",
-width: double.infinity,
-height: 300,
-fit: BoxFit.cover,
-),
-BackdropFilter(
-filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
-child: Container(),
-)
-],
-),
-Positioned(
-top: 120,
-left: MediaQuery.of(context).size.width / 2 - 65,
-child: const SizedBox(
-width: 140,
-child: Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.center,
-children: [
-Row(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.center,
-children: [
-CircleAvatar(
-radius: 60,
-backgroundColor: Colors.white,
-child: CircleAvatar(
-radius: 57,
-backgroundImage: NetworkImage(
-"https://www.itying.com/images/flutter/3.png"),
-),
-),
-]),
-SizedBox(
-height: 10,
-),
-Text('Jim Stevens',
-textAlign: TextAlign.center,
-style: TextStyle(
-fontSize: 22,
-color: Colors.white,
-fontWeight: FontWeight.w600))
-],
-),
-)),
-],
-),
-Container(
-color: Colors.white,
-child: Column(
-crossAxisAlignment: CrossAxisAlignment.start,
-children: [
-const Padding(
-padding: EdgeInsets.all(10),
-child: Row(
-mainAxisAlignment: MainAxisAlignment.spaceAround,
-children: [
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.center,
-children: [
-Text('5',
-style: TextStyle(
-fontSize: 24,
-fontWeight: FontWeight.bold,
-)),
-Text('Groups',
-style: TextStyle(
-fontSize: 14,
-fontWeight: FontWeight.w400,
-)),
-],
-),
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.center,
-children: [
-Text('3',
-style: TextStyle(
-fontSize: 24,
-fontWeight: FontWeight.bold,
-)),
-Text('Interests',
-style: TextStyle(
-fontSize: 14,
-fontWeight: FontWeight.w400,
-)),
-],
-),
-Column(
-mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.center,
-children: [
-Text('7',
-style: TextStyle(
-fontSize: 24,
-fontWeight: FontWeight.bold,
-)),
-Text('RSVPS',
-style: TextStyle(
-fontSize: 14,
-fontWeight: FontWeight.w400,
-)),
-],
-),
-],
-),
-),
-const Padding(
-padding: EdgeInsets.only(
-top: 15, left: 15, right: 15, bottom: 0),
-child: Text("I'm looking to",
-style: TextStyle(
-fontSize: 16.0, fontWeight: FontWeight.bold)),
-),
-Padding(
-padding: const EdgeInsets.all(15),
-child: Wrap(
-spacing: 8,
-runSpacing: 10,
-// direction: Axis.vertical,
-// alignment:WrapAlignment.start,
-// runAlignment: WrapAlignment.center,
-children: <Widget>[
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color:
-const Color.fromRGBO(240, 240, 245, 1.0),
-),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('😀sdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('😀aasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('😀aaaasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('aaaaaasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('aaaaaasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('aaaaaasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-],
-),
-),
-const Padding(
-padding: EdgeInsets.only(
-top: 15, left: 15, right: 15, bottom: 0),
-child: Text("Interests (18)",
-style: TextStyle(
-fontSize: 16.0, fontWeight: FontWeight.bold)),
-),
-Padding(
-padding: const EdgeInsets.all(15),
-child: Wrap(
-spacing: 8,
-runSpacing: 10,
-// direction: Axis.vertical,
-// alignment:WrapAlignment.start,
-// runAlignment: WrapAlignment.center,
-children: <Widget>[
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color:
-const Color.fromRGBO(240, 240, 245, 1.0),
-),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('😀sdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('😀aasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('😀aaaasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('aaaaaasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('aaaaaasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-Container(
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(15),
-color: const Color.fromRGBO(
-240, 240, 245, 1.0)),
-child: const Padding(
-padding: EdgeInsets.symmetric(
-vertical: 4.0, horizontal: 8.0),
-child: Text('aaaaaasdasd',
-style: TextStyle(
-fontSize: 12.0,
-color:
-Color.fromRGBO(113, 113, 115, 1.0),
-fontWeight: FontWeight.w500,
-)),
-)),
-],
-),
-),
-const Padding(
-padding: EdgeInsets.only(
-top: 15, left: 15, right: 15, bottom: 0),
-child: Text("Organizer",
-style: TextStyle(
-fontSize: 16.0, fontWeight: FontWeight.bold)),
-),
-Padding(
-padding: const EdgeInsets.only(
-top: 15, left: 15, right: 15, bottom: 0),
-child: GestureDetector(
-onTap: () {
-// 点击事件代码
-Navigator.pushNamed(context, '/startGroupPage');
-},
-child: Row(
-mainAxisAlignment: MainAxisAlignment.spaceBetween,
-children: [
-Row(
-children: [
-Container(
-width: 40,
-height: 40,
-margin: const EdgeInsets.only(right: 10),
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(5),
-color: const Color.fromRGBO(
-207, 205, 210, 1.0)),
-child: const Icon(
-Icons.add,
-color: Colors.white,
-),
-),
-const Column(
-crossAxisAlignment:
-CrossAxisAlignment.start,
-children: [
-Text('Start a new group',
-style: TextStyle(
-fontSize: 14.0,
-color: Colors.black,
-fontWeight: FontWeight.w500,
-)),
-Text('Organize your own events',
-style: TextStyle(
-fontSize: 12.0,
-color: Color.fromRGBO(
-113, 113, 115, 1.0),
-fontWeight: FontWeight.w300,
-)),
-],
-)
-],
-),
-const Icon(Icons.chevron_right_rounded,
-color: Color.fromRGBO(118, 118, 118, 1.0))
-],
-),
-),
-),
-const Padding(
-padding: EdgeInsets.only(
-top: 15, left: 15, right: 15, bottom: 0),
-child: Text("Member",
-style: TextStyle(
-fontSize: 16.0, fontWeight: FontWeight.bold)),
-),
-Padding(
-padding: const EdgeInsets.only(
-top: 15, left: 15, right: 15, bottom: 0),
-child: GestureDetector(
-onTap: () {
-// 点击事件代码
-Navigator.pushNamed(context, '/discoverGroupPage');
-},
-child: Row(
-mainAxisAlignment: MainAxisAlignment.spaceBetween,
-children: [
-Row(
-children: [
-Container(
-width: 40,
-height: 40,
-margin: const EdgeInsets.only(right: 10),
-decoration: BoxDecoration(
-borderRadius: BorderRadius.circular(5),
-color: const Color.fromRGBO(
-207, 205, 210, 1.0)),
-child: const Icon(
-Icons.search_rounded,
-color: Colors.white,
-),
-),
-const Column(
-crossAxisAlignment:
-CrossAxisAlignment.start,
-children: [
-Text('Discover more groups',
-style: TextStyle(
-fontSize: 14.0,
-color: Colors.black,
-fontWeight: FontWeight.w500,
-)),
-Text('Search by your interests',
-style: TextStyle(
-fontSize: 12.0,
-color: Color.fromRGBO(
-113, 113, 115, 1.0),
-fontWeight: FontWeight.w300,
-)),
-],
-)
-],
-),
-const Icon(Icons.chevron_right_rounded,
-color: Color.fromRGBO(118, 118, 118, 1.0))
-],
-),
-),
-),
-],
-))
+class FunctionPage extends StatefulWidget {
+  @override
+  _FunctionPageState createState() => _FunctionPageState();
+}
 
-],
-);
+class _FunctionPageState extends State<FunctionPage> {
+  GoogleMapController? mapController;
+  final Set<Marker> _markers = {};
+  LatLng _currentPosition = LatLng(51.5072, -0.1276);
+  FlutterSoundRecorder? _recorder;
+  bool _isRecorderInitialized = false;
+  bool _isRecording = false;
+  int? _noiseLevel;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeRecorder();
+    _getCurrentLocation();
+    _markers.addAll(loadTheatreMarkers());
+  }
+
+  Future<void> _initializeRecorder() async {
+    _recorder = FlutterSoundRecorder();
+
+    final ph.PermissionStatus status = await ph.Permission.microphone.request();
+    if (status != ph.PermissionStatus.granted) {
+      setState(() => _isRecorderInitialized = false);
+      return;
+    }
+
+    await _recorder!.openRecorder();
+    _recorder!.setSubscriptionDuration(const Duration(milliseconds: 500));
+    setState(() => _isRecorderInitialized = true);
+  }
+
+  Future<void> _getCurrentLocation() async {
+    Location location = new Location();
+
+    bool serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+
+    PermissionStatus permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    LocationData currentLocation = await location.getLocation();
+
+    setState(() {
+      _currentPosition =
+          LatLng(currentLocation.latitude ?? 0, currentLocation.longitude ?? 0);
+    });
+  }
+
+  void _startOrStopRecording() async {
+    if (_isRecording) {
+      await _recorder!.stopRecorder();
+      setState(() {
+        _isRecording = false;
+        _noiseLevel = null;
+      });
+    } else {
+      await _recorder!.startRecorder(toFile: 'temp.wav');
+      _recorder!.onProgress!.listen((event) {
+        setState(() {
+          _noiseLevel = event.decibels?.round();
+        });
+      });
+      setState(() => _isRecording = true);
+    }
+  }
+
+  Future<void> _fetchNearbyTheaters(LatLng currentPosition) async {
+    const apiKey = 'AIzaSyAdTknHEdeDrUvMahgZawQo2JwmpafovPo';
+    final String url =
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition.latitude},${currentPosition.longitude}&radius=10000&type=theatre&key=$apiKey';
+
+    final response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      _updateMarkers(data['results']);
+    } else {
+      print('Failed to load nearby theatres. Error: ${response.body}');
+    }
+  }
+
+  void _updateMarkers(List<dynamic> theaters) {
+    setState(() {
+      _markers.clear();
+      for (var theater in theaters) {
+        final marker = Marker(
+          markerId: MarkerId(theater['place_id']),
+          position: LatLng(theater['geometry']['location']['lat'],
+              theater['geometry']['location']['lng']),
+          infoWindow: InfoWindow(
+            title: theater['name'],
+            snippet: theater['vicinity'],
+          ),
+        );
+        _markers.add(marker);
+      }
+    });
+  }
+
+  // void _loadTheatreMarkers() {
+  //   setState(() {
+  //     _markers.addAll([
+  //     ]);
+  //   });
+  // }
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    _getCurrentLocation();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    const int noiseThreshold = 70;
+    Size size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              color: Colors.transparent,
+              height: 30,
+            ),
+            Text(
+              'Noise Detector:',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromRGBO(144, 187, 206, 1),
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Card(
+                margin: EdgeInsets.symmetric(horizontal: 60, vertical: 16),
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        _isRecorderInitialized
+                            ? 'Ready to detect'
+                            : 'Initializing...',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      if (_noiseLevel != null)
+                        Text(
+                          'Noise Level: $_noiseLevel dB',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: _noiseLevel! > noiseThreshold
+                                ? Colors.red
+                                : Colors.green,
+                          ),
+                        ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: _isRecorderInitialized
+                            ? _startOrStopRecording
+                            : null,
+                        child: Text(_isRecording
+                            ? 'Stop Detecting'
+                            : 'Start Detecting'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            if (_noiseLevel != null && _noiseLevel! > noiseThreshold)
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Card(
+                  color: Colors.redAccent,
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(Icons.warning, color: Colors.white),
+                        SizedBox(width: 10),
+                        Text(
+                          'High noise level!',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            SizedBox(height: 20),
+            Container(
+              height: 400,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: SizedBox(
+                  height: size.height,
+                  width: size.width * 0.85,
+                  child: GoogleMap(
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: _currentPosition,
+                      zoom: 12.0,
+                    ),
+                    markers: _markers,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _recorder?.closeRecorder();
+    mapController?.dispose();
+    super.dispose();
+  }
+}

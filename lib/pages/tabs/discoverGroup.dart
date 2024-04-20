@@ -13,6 +13,7 @@ class DiscoverGroupPage extends StatelessWidget {
             centerTitle: true,
             title: const Text('Groups',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
         body: const DiscoverGroupMain());
   }
 }

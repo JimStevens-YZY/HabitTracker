@@ -65,6 +65,7 @@ class _MessagesMainState extends State<MessagesMain>
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return ListView(
       children: [
         Padding(
@@ -116,7 +117,7 @@ class _MessagesMainState extends State<MessagesMain>
                                   Row(
                                     children: [
                                       SizedBox(
-                                          width: 300,
+                                          width: size.width * 0.7,
                                           child:  Text(
                                             userAvatar[i]["message"],
                                             style: TextStyle(

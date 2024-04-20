@@ -105,7 +105,7 @@ class _GroupMainState extends State<GroupMain> with TickerProviderStateMixin {
                                         borderRadius: BorderRadius.circular(10),
                                         child: Image.network(group.groupBg,
                                             height: double.infinity,
-                                            width: (size.width - 30) / 3 - 10,
+                                            width: (size.width - 30) / 3,
                                             fit: BoxFit.cover),
                                       ),
                                     ])),

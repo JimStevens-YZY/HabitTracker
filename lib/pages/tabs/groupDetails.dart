@@ -84,6 +84,7 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
         .get();
 
     print(widget.groupId);
+    final size = MediaQuery.of(context).size;
     return FutureBuilder(
       future: _future,
       builder: (context, snapshot) {
@@ -392,7 +393,7 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
                                                     child: Image.network(
                                                         event.data()['eventBg'],
                                                         height: double.infinity,
-                                                        width: 120,
+                                                        width: (size.width - 30) / 3,
                                                         fit: BoxFit.cover),
                                                   ),
                                                 ])),

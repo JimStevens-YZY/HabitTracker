@@ -71,6 +71,7 @@ class _TabsState extends State<Tabs> {
       body: _pages[_currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
           fixedColor: Color.fromRGBO(98, 97, 99, 1.0),
           unselectedItemColor: Color.fromRGBO(169, 168, 169, 1.0),
           //选中的颜色
