@@ -74,26 +74,29 @@ final router = GoRouter(
                   context.push(uri.toString());
                 })),
                 AuthStateChangeAction(((context, state) {
-                  final user = switch (state) {
-                    SignedIn state => state.user,
-                    UserCreated state => state.credential.user,
-                    _ => null
+                  final user =
+                  switch (state) {
+                  SignedIn state =>
+                  state.user
+                  ,
+                  UserCreated state => state.credential.user,
+                  _ => null
                   };
                   if (user == null) {
-                    return;
+                  return;
                   }
                   if (state is UserCreated) {
-                    user.updateDisplayName(user.email!.split('@')[0]);
+                  user.updateDisplayName(user.email!.split('@')[0]);
                   }
                   if (!user.emailVerified) {
-                    user.sendEmailVerification();
-                    const snackBar = SnackBar(
-                        content: Text(
-                            'Please check your email to verify your email address'));
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  user.sendEmailVerification();
+                  const snackBar = SnackBar(
+                  content: Text(
+                  'Please check your email to verify your email address'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                   context.pushReplacement('/');
-                })),
+                  })),
               ],
             );
           },
@@ -138,8 +141,11 @@ final router = GoRouter(
           },
         ),
         GoRoute(
-          path: "chatPage",
-          builder: (context, state) => const ChatPage(),
+          path: "chatPage/:chatId",
+          builder: (context, state) {
+            final chatId = state.pathParameters['chatId']!;
+            return ChatPage(chatId: chatId);
+          },
         ),
         GoRoute(
           path: "discoverGroup",

@@ -114,7 +114,7 @@ class _MeMainState extends State<MeMain> {
                                                   child: CircleAvatar(
                                                     radius: 57,
                                                     backgroundImage: NetworkImage(
-                                                        "https://www.itying.com/images/flutter/3.png"),
+                                                        "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar.jpeg"),
                                                   ),
                                                 ),
                                               ]),

@@ -131,7 +131,7 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
                                 child: CircleAvatar(
                                   radius: 15,
                                   backgroundImage: NetworkImage(
-                                      userAvatar[i]),
+                                      userAvatar[i]["avatar"]),
                                 ),
                               ),
                             /*      CircleAvatar(
@@ -278,7 +278,7 @@ class _GroupDetailsMainState extends State<GroupDetailsMain>
                                           borderRadius:
                                           BorderRadius.circular(10),
                                           child: Image.network(
-                                              userAvatar[index],
+                                              userAvatar[index]["avatar"],
                                               height: 120,
                                               width: 120,
                                               fit: BoxFit.cover),

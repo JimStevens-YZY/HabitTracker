@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../res/listData.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  final String chatId;
+
+  const ChatPage({super.key, required this.chatId});
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +13,16 @@ class ChatPage extends StatelessWidget {
         appBar: AppBar(
             backgroundColor: Color.fromRGBO(235, 235, 236, 1.0),
             centerTitle: true,
-            title: const Text('momo',
+            title: Text(userAvatar[int.parse(this.chatId)]["name"],
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
-        body: const ChatPageMain());
+        body: ChatPageMain(chatId: this.chatId));
   }
 }
 
 class ChatPageMain extends StatefulWidget {
-  const ChatPageMain({super.key});
+  final String chatId;
+
+  const ChatPageMain({super.key, required this.chatId});
 
   @override
   State<ChatPageMain> createState() => _ChatPageMainState();
@@ -79,7 +83,7 @@ class _ChatPageMainState extends State<ChatPageMain>
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                        "https://www.itying.com/images/flutter/3.png",
+                        userAvatar[int.parse(widget.chatId)]["avatar"],
                         height: 40,
                         width: 40,
                         fit: BoxFit.cover),
@@ -95,7 +99,8 @@ class _ChatPageMainState extends State<ChatPageMain>
                       constraints: const BoxConstraints(
                         maxWidth: 200.0,
                       ),
-                      child: const Text('aaaaaaaaaaaaaaaaa',
+                      child: Text(
+                          userAvatar[int.parse(widget.chatId)]["message"],
                           softWrap: true,
                           style: TextStyle(
                               fontSize: 16.0,
@@ -142,7 +147,8 @@ class _ChatPageMainState extends State<ChatPageMain>
                         constraints: const BoxConstraints(
                           maxWidth: 200.0,
                         ),
-                        child: const Text('aaaaaaaaaaaaaaaaa',
+                        child: Text(
+                            userAvatar[int.parse(widget.chatId) + 1 > 13 ? 0 : int.parse(widget.chatId) + 1]["message"],
                             softWrap: true,
                             style: TextStyle(
                                 fontSize: 16.0,
@@ -152,7 +158,7 @@ class _ChatPageMainState extends State<ChatPageMain>
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                        "https://www.itying.com/images/flutter/3.png",
+                        "https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/avatar.jpeg",
                         height: 40,
                         width: 40,
                         fit: BoxFit.cover),

@@ -21,7 +21,6 @@ class MessagesPage extends StatelessWidget {
 class MessagesMain extends StatefulWidget {
   const MessagesMain({super.key});
 
-
   @override
   State<MessagesMain> createState() => _MessagesMainState();
 }
@@ -72,57 +71,75 @@ class _MessagesMainState extends State<MessagesMain>
           padding: EdgeInsets.all(15),
           child: Column(
             children: [
-              Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 24,
-                    backgroundImage: NetworkImage(
-                        "https://www.itying.com/images/flutter/3.png"),
-                  ),
-                  GestureDetector(
-                      onTap: () {
-                        // 点击事件代码
-                        GoRouter.of(context).push('/chatPage');
-                      },
-                      child:  Container(
-                        padding: const EdgeInsets.only(left: 10),
-                        width: 350,
-                        height: 48,
-                        child: const Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('momo',
-                                    style: TextStyle(
-                                        fontSize: 17.0,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color.fromRGBO(51, 51, 52, 1.0))),
-                                Text('02:34',
-                                    style: TextStyle(
-                                        fontSize: 13.0,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color.fromRGBO(147, 148, 149, 1.0)))
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text('aaaaaaaaaaaaaaabbbbbbcccccc',
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color.fromRGBO(147, 148, 149, 1.0)))
-                              ],
-                            )
-                          ],
+              for (int i = 0; i < userAvatar.length; i++)
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 24,
+                          backgroundImage:
+                              NetworkImage(userAvatar[i]["avatar"]),
                         ),
-                      )
-                  ),
+                        GestureDetector(
+                            onTap: () {
+                              // 点击事件代码
+                              GoRouter.of(context).push('/chatPage/${i}');
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              width: 350,
+                              height: 48,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(userAvatar[i]["name"],
+                                          style: TextStyle(
+                                              fontSize: 17.0,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromRGBO(
+                                                  51, 51, 52, 1.0))),
+                                      Text(userAvatar[i]["time"],
+                                          style: TextStyle(
+                                              fontSize: 13.0,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color.fromRGBO(
+                                                  147, 148, 149, 1.0)))
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                          width: 300,
+                                          child:  Text(
+                                            userAvatar[i]["message"],
+                                            style: TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.w400,
+                                                color: Color.fromRGBO(
+                                                    147, 148, 149, 1.0)),
+                                            overflow: TextOverflow.ellipsis,
+                                          )
+                                      )
 
-                ],
-              )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    )
+                  ],
+                )
             ],
           ),
         ),
