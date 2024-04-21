@@ -449,88 +449,88 @@ class _MeMainState extends State<MeMain> {
                   ),
                 ))
           ] else if (!appState.loggedIn) ...[
-
-            Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.9,
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/bg.jpg'),
-                          fit: BoxFit.fill, // 设置填充方式为填满父容器
+            Expanded(
+              flex: 1,
+              child: Container(
+                  child: Stack(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/bg.jpg'),
+                        fit: BoxFit.fill, // 设置填充方式为填满父容器
+                      ),
+                    ),
+                  ),
+                  const Positioned(
+                    top: 194,
+                    left: 40,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'EventGather',
+                          style: kTitleTextStyle,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Where Moments Unite,\nMemories Ignite',
+                          style: kBodyTextStyle,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * 0.6,
+                    left: MediaQuery.of(context).size.width / 2 - 104,
+                    child: GestureDetector(
+                      onTap: () {
+                        context.push('/sign-in');
+                      },
+                      child: Container(
+                        width: 208,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          gradient: kBtnLinearGradient,
+                          boxShadow: kBtnShadow,
+                          borderRadius: BorderRadius.circular(kBtnRadius),
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Sign up",
+                          style: kBtnTextStyle.copyWith(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 194,
-                      left: 40,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'EventGather',
-                            style: kTitleTextStyle,
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Where Moments Unite,\nMemories Ignite',
-                            style: kBodyTextStyle,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.6,
+                  ),
+                  SizedBox(height: 16),
+                  Positioned(
+                      top: MediaQuery.of(context).size.height * 0.6 + 60,
                       left: MediaQuery.of(context).size.width / 2 - 104,
                       child: GestureDetector(
-                        onTap: () {
-                          context.push('/sign-in');
-                        },
                         child: Container(
                           width: 208,
                           height: 48,
                           decoration: BoxDecoration(
-                            gradient: kBtnLinearGradient,
+                            color: Colors.white,
                             boxShadow: kBtnShadow,
                             borderRadius: BorderRadius.circular(kBtnRadius),
                           ),
                           alignment: Alignment.center,
-                          child: Text(
-                            "Sign up",
-                            style: kBtnTextStyle.copyWith(
-                              color: Colors.white,
-                            ),
+                          child: const Text(
+                            'Login',
+                            style: kBtnTextStyle,
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Positioned(
-                        top: MediaQuery.of(context).size.height * 0.6 + 60,
-                        left: MediaQuery.of(context).size.width / 2 - 104,
-                        child: GestureDetector(
-                          child: Container(
-                            width: 208,
-                            height: 48,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: kBtnShadow,
-                              borderRadius: BorderRadius.circular(kBtnRadius),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Login',
-                              style: kBtnTextStyle,
-                            ),
-                          ),
-                          onTap: () {
-                            context.push('/sign-in');
-                          },
-                        ))
-                  ],
-                )),
+                        onTap: () {
+                          context.push('/sign-in');
+                        },
+                      ))
+                ],
+              )),
+            )
 
             /* GestureDetector(
                     child: LoginBtnWidget(),
