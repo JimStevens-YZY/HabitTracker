@@ -212,6 +212,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "fixnum",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/fixnum-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///Users/jimstevens/sdk/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -270,6 +276,66 @@
       "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/functions_client-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "geocoding",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geocoding-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "geocoding_android",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geocoding_android-3.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "geocoding_ios",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geocoding_ios-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "geocoding_platform_interface",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geocoding_platform_interface-3.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "geolocator",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geolocator-10.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "geolocator_android",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geolocator_android-4.5.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "geolocator_apple",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geolocator_apple-2.3.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "geolocator_platform_interface",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "geolocator_web",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geolocator_web-2.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "geolocator_windows",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
     },
     {
       "name": "go_router",
@@ -620,6 +686,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "sprintf",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/sprintf-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/stack_trace-1.11.1",
       "packageUri": "lib/",
@@ -728,6 +800,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "uuid",
+      "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/uuid-4.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "vector_graphics",
       "rootUri": "file:///Users/jimstevens/.pub-cache/hosted/pub.dev/vector_graphics-1.1.11+1",
       "packageUri": "lib/",
@@ -800,7 +878,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-04-21T11:06:39.196411Z",
+  "generated": "2024-04-21T11:49:04.562466Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }

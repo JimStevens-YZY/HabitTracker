@@ -247,6 +247,13 @@
             </list>
           </value>
         </entry>
+        <entry key="fixnum">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/fixnum-1.1.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter">
           <value>
             <list>
@@ -314,6 +321,76 @@
           <value>
             <list>
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/functions_client-2.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geocoding">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding-3.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geocoding_android">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding_android-3.3.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geocoding_ios">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding_ios-3.0.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geocoding_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding_platform_interface-3.2.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geolocator">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator-10.1.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geolocator_android">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_android-4.5.4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geolocator_apple">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_apple-2.3.7/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geolocator_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.2.2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geolocator_web">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_web-2.2.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="geolocator_windows">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.3/lib" />
             </list>
           </value>
         </entry>
@@ -723,6 +800,13 @@
             </list>
           </value>
         </entry>
+        <entry key="sprintf">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/sprintf-7.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="stack_trace">
           <value>
             <list>
@@ -849,6 +933,13 @@
             </list>
           </value>
         </entry>
+        <entry key="uuid">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/uuid-4.4.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="vector_graphics">
           <value>
             <list>
@@ -964,12 +1055,23 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_ui_localizations-1.10.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_ui_oauth-1.5.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/firebase_ui_shared-1.4.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fixnum-1.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_launcher_icons-0.13.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.19/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_svg-2.0.10+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-8.2.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/functions_client-2.0.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding-3.0.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding_android-3.3.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding_ios-3.0.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geocoding_platform_interface-3.2.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator-10.1.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_android-4.5.4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_apple-2.3.7/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.2.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_web-2.2.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/go_router-13.2.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_maps-6.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/google_maps_flutter-2.5.3/lib" />
@@ -1027,6 +1129,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.3.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/source_span-1.10.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/sprintf-7.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/stack_trace-1.11.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/storage_client-2.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/stream_channel-2.1.2/lib" />
@@ -1045,6 +1148,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_platform_interface-2.3.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_web-2.2.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/uuid-4.4.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vector_graphics-1.1.11+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.11+1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.11+1/lib" />
