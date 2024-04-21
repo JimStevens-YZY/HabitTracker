@@ -10,6 +10,7 @@ import 'authentication.dart';
 import 'guest_book.dart';
 import 'package:go_router/go_router.dart';
 
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -35,8 +36,36 @@ class HomeMain extends StatefulWidget {
 }
 
 class _HomeMainState extends State<HomeMain> {
+
+/*  Future<void> _getCurrentLocation() async {
+    Location location = new Location();
+
+    bool serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+
+    PermissionStatus permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    LocationData currentLocation = await location.getLocation();
+
+    setState(() {
+      _currentPosition =
+          LatLng(currentLocation.latitude ?? 0, currentLocation.longitude ?? 0);
+    });
+  }*/
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return ListView(padding: const EdgeInsets.all(15), children: <Widget>[
       const Text("Explore EventGather",
           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),

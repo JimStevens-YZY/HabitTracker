@@ -452,7 +452,7 @@ class _MeMainState extends State<MeMain> {
 
             Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.bottom - MediaQuery.of(context).padding.top - 92,
+                height: MediaQuery.of(context).size.height * 0.9,
                 child: Stack(
                   children: [
                     Container(

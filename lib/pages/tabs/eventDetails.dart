@@ -12,6 +12,13 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:location/location.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'package:permission_handler/permission_handler.dart' as ph;
+
 class EventDetailsPage extends StatelessWidget {
   final String eventId;
 
@@ -89,6 +96,20 @@ class _EventDetailsMainState extends State<EventDetailsMain>
 
     CollectionReference groups =
         FirebaseFirestore.instance.collection('groups');
+
+    GoogleMapController? mapController;
+    final _markers = {
+      const Marker(
+        markerId: MarkerId('Sydney'),
+        position: LatLng(51.5072, -0.1276),
+      )
+    };
+    LatLng _currentPosition = LatLng(51.5072, -0.1276);
+
+    void _onMapCreated(GoogleMapController controller) {
+      mapController = controller;
+      //_getCurrentLocation();
+    }
 
 /*    final db = FirebaseFirestore.instance;
     var data;
@@ -236,7 +257,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: Image.network(
                                                     data["groupBg"],
                                                     height: double.infinity,
-                                                    width: 95,
+                                                    width: (size.width - 30) / 3 - 35,
                                                     fit: BoxFit.cover),
                                               ),
                                             ])),
@@ -541,7 +562,25 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                 style: TextStyle(
                                     fontSize: 14, fontWeight: FontWeight.w400)),*/
                             const SizedBox(height: 10),
-                            SizedBox(
+                            Container(
+                              height: 200,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: SizedBox(
+                                  height: 100,
+                                  width: size.width,
+                                  child: GoogleMap(
+                                    onMapCreated: _onMapCreated,
+                                    initialCameraPosition: CameraPosition(
+                                      target: _currentPosition,
+                                      zoom: 16.0,
+                                    ),
+                                    markers: _markers,
+                                  ),
+                                ),
+                              ),
+                            ),
+                           /* SizedBox(
                               height: 200,
                               width: double.infinity,
                               child: ClipRRect(
@@ -552,7 +591,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                     width: double.infinity,
                                     fit: BoxFit.cover),
                               ),
-                            ),
+                            ),*/
                             const Divider(),
                             const SizedBox(height: 10),
                             const Text('Discussion',
