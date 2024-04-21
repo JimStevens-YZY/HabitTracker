@@ -123,6 +123,19 @@ class _HomeMainState extends State<HomeMain> {
     return ListView(padding: const EdgeInsets.all(15), children: <Widget>[
       const Text("Explore EventGather",
           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+/*      Text('ADDRESS: ${_currentAddress ?? ""}',style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w400)),
+      const Icon(Icons.bookmark_border,
+          color: Color.fromRGBO(
+              160, 160, 160, 1.0)),*/
+      Row(
+        children: [
+          const Icon(Icons.location_on_outlined,
+              color: Color.fromRGBO(
+                  160, 160, 160, 1.0),size: 18,),
+          SizedBox(width: 5,),
+          Text('${_currentAddress ?? ""}',style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: Color.fromRGBO(118, 118, 119, 1.0))),
+        ],
+      ),
       const SizedBox(
         width: double.infinity,
         height: 20,
@@ -971,7 +984,7 @@ class _HomeMainState extends State<HomeMain> {
                   }),
                 )),
       ),
-      Column(
+  /*    Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('LAT: ${_currentPosition?.latitude ?? ""}'),
@@ -983,7 +996,7 @@ class _HomeMainState extends State<HomeMain> {
             child: const Text("Get Current Location"),
           )
         ],
-      ),
+      ),*/
 /*    FutureBuilder(
       future: _determinePosition(),
       builder: (context, snapshot) {

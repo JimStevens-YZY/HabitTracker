@@ -11,6 +11,7 @@ class DiscoverGroupPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             centerTitle: true,
+            backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
             title: const Text('Groups',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
         backgroundColor: Color.fromRGBO(255, 255, 255, 1.0),
