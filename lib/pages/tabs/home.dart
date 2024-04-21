@@ -133,7 +133,7 @@ class _HomeMainState extends State<HomeMain> {
               color: Color.fromRGBO(
                   160, 160, 160, 1.0),size: 18,),
           SizedBox(width: 5,),
-          Text('${_currentAddress ?? ""}',style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: Color.fromRGBO(118, 118, 119, 1.0))),
+          Text('${_currentAddress ?? "Locating..."}',style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: Color.fromRGBO(118, 118, 119, 1.0))),
         ],
       ),
       const SizedBox(
