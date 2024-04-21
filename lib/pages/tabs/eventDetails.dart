@@ -254,7 +254,9 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                                 child: Image.network(
                                                     data["groupBg"],
                                                     height: double.infinity,
-                                                    width: (size.width - 30) / 3 - 35,
+                                                    width:
+                                                        (size.width - 30) / 3 -
+                                                            35,
                                                     fit: BoxFit.cover),
                                               ),
                                             ])),
@@ -577,7 +579,7 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                 ),
                               ),
                             ),
-                           /* SizedBox(
+                            /* SizedBox(
                               height: 200,
                               width: double.infinity,
                               child: ClipRRect(
@@ -643,9 +645,9 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                 child: Container(
                     width: size.width,
                     height: 85,
-                     decoration: const BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 1.0),
-                ),
+                    decoration: const BoxDecoration(
+                      color: Color.fromRGBO(240, 240, 241, 1.0),
+                    ),
                     child: Padding(
                       padding: EdgeInsets.only(left: 20, right: 20),
                       child: SafeArea(
@@ -657,14 +659,24 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                             children: [
                               Container(
                                 padding: const EdgeInsets.all(3),
-                                width: size.width * 0.45,
+                                width: size.width * 0.65,
                                 height: 40,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius: BorderRadius.circular(3.0)),
+                                    borderRadius: BorderRadius.circular(30.0)),
                                 constraints: const BoxConstraints(
                                     minHeight: 30.0, maxHeight: 150.0),
-                                child: TextFormField(
+                                child: TextField(
+                                    controller: _controller,
+                                    maxLines: null,
+                                    keyboardType: TextInputType.multiline,
+                                    decoration: InputDecoration(
+                                        hintStyle: TextStyle(fontSize: 14.0),
+                                        isDense: true,
+                                        contentPadding: EdgeInsets.all(5.0),
+                                        border: OutlineInputBorder(
+                                            borderSide: BorderSide
+                                                .none))) /*TextFormField(
                                   controller: _controller,
                                   maxLines: null,
                                   keyboardType: TextInputType.multiline,
@@ -681,9 +693,15 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                           BorderSide(color: Colors.deepPurple),
                                     ),
                                   ),
-                                ),
+                                )*/
+                                ,
                               ),
-                              OutlinedButton(
+                              IconButton(
+                                icon: const Icon(
+
+                                    /// 图标
+                                    Icons.send,
+                                    size: 24),
                                 onPressed: () async {
                                   if (_formKey.currentState!.validate() &&
                                       _controller.text.isNotEmpty) {
@@ -701,17 +719,23 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                         fontSize: 16.0);
                                   }
                                 },
-                                child: Text('Send'),
-                                style: OutlinedButton.styleFrom(
+                                // child: Text('Send'),
+                                /*  style: OutlinedButton.styleFrom(
                                     minimumSize: Size(size.width * 0.2, 35),
                                     side: const BorderSide(
                                         color:
                                             Color.fromRGBO(171, 168, 174, 1)),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
-                                    )),
+                                    )),*/
                               ),
-                              OutlinedButton(
+                              IconButton(
+                                icon: const Icon(
+
+                                    /// 图标
+                                    Icons.add_circle_outline,
+                                    size: 24,
+                                    color: Color.fromRGBO(26, 26, 27, 1.0)),
                                 onPressed: () async {
                                   await appState.signUpEvent(
                                       event['eventDate'],
@@ -728,13 +752,13 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                                       textColor: Colors.white,
                                       fontSize: 16.0);
                                 },
-                                child: Text('RSVP'),
-                                style: OutlinedButton.styleFrom(
+                                // child: Text('RSVP'),
+                                /*  style: OutlinedButton.styleFrom(
                                     minimumSize: Size(size.width * 0.2, 35),
                                     side: const BorderSide(color: Color.fromRGBO(171, 168, 174, 1)),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    )),
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    )),*/
                               )
                             ],
                           ),
