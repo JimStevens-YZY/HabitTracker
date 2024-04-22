@@ -13,7 +13,7 @@ Please check out our website for more information: https://jimstevens-yzy.github
 - **Event Discovery :golf: :** Easily find a wide range of events happening in your area or related to your interests. We make this process easy and enjoyable, providing you with various ways to discover new events.
 - **Explore Groups ⛷ :** Connect with members who share your interests, whether it's building a career network, exploring tech communities, cultivating personal branding, indulging in hobbies, or making friends with similar passions.
 - **Group Creation 💬 :** Host your own events online and in person by creating a group on your favorite topic. Watch your community grow as your group is recommended to interested people, expanding your network.
-- **Connect with Attendees:label: :** Chatting with other attendees is a great way to network, share experiences, and build connections. On this platform, you can easily find other attendees who are participating in the same event.
+- **Connect with Attendees :label: :** Chatting with other attendees is a great way to network, share experiences, and build connections. On this platform, you can easily find other attendees who are participating in the same event.
 
 ## StoryBoarding
 
