@@ -82,58 +82,62 @@ class _MessagesMainState extends State<MessagesMain>
                           backgroundImage:
                               NetworkImage(userAvatar[i]["avatar"]),
                         ),
-                        GestureDetector(
-                            onTap: () {
-                              // 点击事件代码
-                              GoRouter.of(context).push('/chatPage/${i}');
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.only(left: 10),
-                              width: 350,
-                              height: 48,
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(userAvatar[i]["name"],
-                                          style: TextStyle(
-                                              fontSize: 17.0,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color.fromRGBO(
-                                                  51, 51, 52, 1.0))),
-                                      Text(userAvatar[i]["time"],
-                                          style: TextStyle(
-                                              fontSize: 13.0,
-                                              fontWeight: FontWeight.w400,
-                                              color: Color.fromRGBO(
-                                                  147, 148, 149, 1.0)))
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                          width: size.width * 0.7,
-                                          child:  Text(
-                                            userAvatar[i]["message"],
+                        Expanded(
+                          flex: 1,
+                          child: GestureDetector(
+                              onTap: () {
+                                // 点击事件代码
+                                GoRouter.of(context).push('/chatPage/${i}');
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.only(left: 10),
+                                //width: size.width - 80,
+                                height: 48,
+                                child: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(userAvatar[i]["name"],
                                             style: TextStyle(
-                                                fontSize: 16.0,
+                                                fontSize: 17.0,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color.fromRGBO(
+                                                    51, 51, 52, 1.0))),
+                                        Text(userAvatar[i]["time"],
+                                            style: TextStyle(
+                                                fontSize: 13.0,
                                                 fontWeight: FontWeight.w400,
                                                 color: Color.fromRGBO(
-                                                    147, 148, 149, 1.0)),
-                                            overflow: TextOverflow.ellipsis,
-                                          )
-                                      )
+                                                    147, 148, 149, 1.0)))
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                            width: size.width * 0.7,
+                                            child:  Text(
+                                              userAvatar[i]["message"],
+                                              style: TextStyle(
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Color.fromRGBO(
+                                                      147, 148, 149, 1.0)),
+                                              overflow: TextOverflow.ellipsis,
+                                            )
+                                        )
 
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(
