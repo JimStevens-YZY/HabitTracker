@@ -4,6 +4,10 @@
 
 EventGather is a platform for aggregating and managing various events in one place. Whether you're planning a conference, meetup, or any other gathering, EventGather makes it happen.
 
+## Landing Page
+
+Please check out our website for more information: https://jimstevens-yzy.github.io/EventGatherLandingPage/
+
 ## Features
 
 - **Event Discovery :golf: :** Easily discover a wide range of events happening in your area or related to your interests.
@@ -11,10 +15,36 @@ EventGather is a platform for aggregating and managing various events in one pla
 - **Group Creation 💬 :** Host your own events online and in person by creating a group on your favorite topic. Watch your community grow as your group is recommended to interested people, expanding your network.
 - **Personalized Event Management :label: :** Save and revisit events of interest. Choose and connect with specific people at the events you like.
 
+## StoryBoarding
 
-## Include A Section That Tells Developers How To Install The App
+![image](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/Md3.png)
 
-Include a section that gives intructions on how to install the app or run it in Flutter.  What versions of the plugins are you assuming?  Maybe define a licence
+![image](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/Md4.png)
+
+## UI Design
+
+![image](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/Md2.png)
+
+## Screenshots
+![image](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/Md1.png)
+
+## Video Demo
+
+Here's the link to the video demo, where you can watch a detailed demonstration of our product's features and functionality. 
+
+[![Video Demo](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/Md5.png)](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/EventGather.mp4)
+
+## Installation
+
+To install and run the EventGather application on Android, follow these steps:
+
+1. **Download the APK File** **📥**: Visit this URL: https://github.com/JimStevens-YZY/EventGather/releases and download the latest APK file. Ensure you're downloading from a trusted source.
+2. **Allow Installation from Unknown Sources 🔓: Before installing the APK, go to your Android device's settings and navigate to "Security" or "Privacy." Enable "Install from Unknown Sources" or "Install Unknown Apps" to allow the installation of apps from outside the Google Play Store.
+3. **Install the APK **📦: After downloading the APK file, locate it in your device's "Downloads" folder or notification panel. Tap the file to start the installation process, then follow the on-screen prompts to complete the installation.
+4. **Launch the App** **🚀**: Once installed, find the EventGather app icon on your Android home screen or app drawer, and tap to open it.
+5. **Explore Events **🔎: After logging in, you can begin browsing and participating in events, exploring groups, and using other features provided by the EventGather platform.
+
+These steps should guide you through installing EventGather on Android. If you encounter any issues, consult the documentation or support resources provided on the GitHub releases page.
 
 ## Quick Start
 
@@ -29,4 +59,4 @@ If you have any suggestions or discover a bug in the application, feel free to r
 
 ##  Contact Us
 
-For any inquiries, please contact us via email :e-mail: : email@example.com
+For any inquiries, please contact us via email :e-mail: : yuzeyi0326@gmail.com
