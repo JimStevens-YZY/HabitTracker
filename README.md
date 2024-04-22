@@ -32,7 +32,7 @@ Please check out our website for more information: https://jimstevens-yzy.github
 
 Here's the link to the video demo, where you can watch a detailed demonstration of our product's features and functionality. 
 
-[![Video Demo](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/Md5.png)](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/EventGather.mp4)
+[![Video Demo](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/Md6.png)](https://seniorassistant.oss-cn-hangzhou.aliyuncs.com/omg-img-path/EventGather.mp4)
 
 ## Installation
 
