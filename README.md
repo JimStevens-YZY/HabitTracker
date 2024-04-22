@@ -59,4 +59,4 @@ If you have any suggestions or discover a bug in the application, feel free to r
 
 ##  Contact Us
 
-For any inquiries, please contact us via email :e-mail: : yuzeyi0326@gmail.com
+For any inquiries, please contact us via email :e-mail: : yuzeyi0326@gmail.com 
