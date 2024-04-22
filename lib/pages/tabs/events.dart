@@ -66,245 +66,247 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
             Tab(child: Text("Past events"))
           ],
         ),
-        Container(
-          height: 400,
-          child: TabBarView(
-            controller: tabController,
-            children: [
-              Consumer<ApplicationState>(builder: (context, appState, _) {
-                List<Map<String, dynamic>> allSignedEvents =
-                    appState.signedEvent.map((eventData) {
-                  String dateString = eventData.signedEventDate;
-                  String timeString = eventData.signedEventTime;
-                  DateTime dateTime = DateTime.parse('$dateString $timeString');
-                  return {
-                    'signedEventDate': eventData.signedEventDate,
-                    'signedEventDesc': eventData.signedEventDesc,
-                    'signedEventName': eventData.signedEventName,
-                    'signedEventTime': eventData.signedEventTime,
-                    'signedEventBg': eventData.signedEventBg,
-                    'userId': eventData.userId,
-                    'dateTime': dateTime
-                  };
-                }).toList();
-                allSignedEvents.sort((a, b) {
-                  return a['dateTime'].compareTo(b['dateTime']);
-                });
-                DateTime today = DateTime.now();
-                DateTime todayDate =
-                    DateTime(today.year, today.month, today.day);
-                allSignedEvents = allSignedEvents
-                    .where((event) =>
-                        event['dateTime'].isAfter(todayDate) &&
-                        event['userId'] ==
-                            FirebaseAuth.instance.currentUser?.uid)
-                    .toList();
-                if(allSignedEvents.length > 0)
-                  return ListView.builder(
-                  padding: const EdgeInsets.all(15),
-                  itemCount: allSignedEvents.length,
-                  itemBuilder: ((context, index) {
-                    final event = allSignedEvents[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          width: double.infinity,
-                          height: 10,
-                        ),
-                        Container(
-                            height: 120,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  //边框颜色
-                                  width: 1, //边框宽度
-                                ), // 边色与边宽度
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 10, //阴影范围
-                                    spreadRadius: 0.1, //阴影浓度
-                                    color: Colors.grey.withOpacity(0.2), //阴影颜色
-                                  ),
-                                ],
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white),
-                            child: Flex(direction: Axis.horizontal, children: [
-                              Expanded(
-                                  flex: 2,
-                                  child: Padding(
-                                      padding: const EdgeInsets.all(25),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            '${event['signedEventName']}-${event['signedEventDesc']}',
-                                            style: const TextStyle(
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w500),
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          const SizedBox(height: 6),
-                                          Text(
-                                              '${event['signedEventDate']} at ${event['signedEventTime']}',
-                                              style: const TextStyle(
-                                                  fontSize: 12.0,
-                                                  fontWeight: FontWeight.w400))
-                                        ],
-                                      ))),
-                              Expanded(
-                                  flex: 1,
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                        topRight: Radius.circular(10),
-                                        bottomRight: Radius.circular(10)),
-                                    child: Image.network(event['signedEventBg'],
-                                        height: double.infinity,
-                                        fit: BoxFit.cover),
-                                  ))
-                            ]))
-                      ],
-                    );
-                  }),
-                );
-                else
-                  return Column(
-                    children: [
-                      SizedBox(height: 20,),
-                      Text("No Upcoming Event yet",style: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(
-                              53, 52, 77, 1.0))),
-                      Text("Hurry up and find the event you'd like to attend!",style: const TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(
-                              108, 111, 132, 1.0)))
-                    ],
-                  );
-
-              }),
-              Consumer<ApplicationState>(builder: (context, appState, _) {
-                List<Map<String, dynamic>> allSignedEvents =
-                    appState.signedEvent.map((eventData) {
-                  String dateString = eventData.signedEventDate;
-                  String timeString = eventData.signedEventTime;
-                  DateTime dateTime = DateTime.parse('$dateString $timeString');
-                  return {
-                    'signedEventDate': eventData.signedEventDate,
-                    'signedEventDesc': eventData.signedEventDesc,
-                    'signedEventName': eventData.signedEventName,
-                    'signedEventTime': eventData.signedEventTime,
-                    'signedEventBg': eventData.signedEventBg,
-                    'userId': eventData.userId,
-                    'dateTime': dateTime
-                  };
-                }).toList();
-                allSignedEvents.sort((a, b) {
-                  return a['dateTime'].compareTo(b['dateTime']);
-                });
-                DateTime today = DateTime.now();
-                DateTime todayDate =
-                    DateTime(today.year, today.month, today.day);
-                allSignedEvents = allSignedEvents
-                    .where((event) =>
-                        event['dateTime'].isBefore(todayDate) &&
-                        event['userId'] ==
-                            FirebaseAuth.instance.currentUser?.uid)
-                    .toList();
-                if(allSignedEvents.length > 0)
-                  return ListView.builder(
-                  padding: const EdgeInsets.all(15),
-                  itemCount: allSignedEvents.length,
-                  itemBuilder: ((context, index) {
-                    final event = allSignedEvents[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          width: double.infinity,
-                          height: 10,
-                        ),
-                        Container(
-                            height: 120,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  //边框颜色
-                                  width: 1, //边框宽度
-                                ), // 边色与边宽度
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 10, //阴影范围
-                                    spreadRadius: 0.1, //阴影浓度
-                                    color: Colors.grey.withOpacity(0.2), //阴影颜色
-                                  ),
-                                ],
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white),
-                            child: Flex(direction: Axis.horizontal, children: [
-                              Expanded(
-                                  flex: 2,
-                                  child: Padding(
-                                      padding: const EdgeInsets.all(25),
-                                      child: Column(
-                                        crossAxisAlignment:
+        Expanded(
+          flex: 1,
+          child: Container(
+            height: 400,
+            child: TabBarView(
+              controller: tabController,
+              children: [
+                Consumer<ApplicationState>(builder: (context, appState, _) {
+                  List<Map<String, dynamic>> allSignedEvents =
+                  appState.signedEvent.map((eventData) {
+                    String dateString = eventData.signedEventDate;
+                    String timeString = eventData.signedEventTime;
+                    DateTime dateTime = DateTime.parse('$dateString $timeString');
+                    return {
+                      'signedEventDate': eventData.signedEventDate,
+                      'signedEventDesc': eventData.signedEventDesc,
+                      'signedEventName': eventData.signedEventName,
+                      'signedEventTime': eventData.signedEventTime,
+                      'signedEventBg': eventData.signedEventBg,
+                      'userId': eventData.userId,
+                      'dateTime': dateTime
+                    };
+                  }).toList();
+                  allSignedEvents.sort((a, b) {
+                    return a['dateTime'].compareTo(b['dateTime']);
+                  });
+                  DateTime today = DateTime.now();
+                  DateTime todayDate =
+                  DateTime(today.year, today.month, today.day);
+                  allSignedEvents = allSignedEvents
+                      .where((event) =>
+                  event['dateTime'].isAfter(todayDate) &&
+                      event['userId'] ==
+                          FirebaseAuth.instance.currentUser?.uid)
+                      .toList();
+                  if(allSignedEvents.length > 0)
+                    return ListView.builder(
+                      padding: const EdgeInsets.all(15),
+                      itemCount: allSignedEvents.length,
+                      itemBuilder: ((context, index) {
+                        final event = allSignedEvents[index];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              width: double.infinity,
+                              height: 10,
+                            ),
+                            Container(
+                                height: 120,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      //边框颜色
+                                      width: 1, //边框宽度
+                                    ), // 边色与边宽度
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 10, //阴影范围
+                                        spreadRadius: 0.1, //阴影浓度
+                                        color: Colors.grey.withOpacity(0.2), //阴影颜色
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white),
+                                child: Flex(direction: Axis.horizontal, children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Padding(
+                                          padding: const EdgeInsets.all(25),
+                                          child: Column(
+                                            crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            '${event['signedEventName']}-${event['signedEventDesc']}',
-                                            style: const TextStyle(
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w500),
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          const SizedBox(height: 6),
-                                          Text(
-                                              '${event['signedEventDate']} at ${event['signedEventTime']}',
-                                              style: const TextStyle(
-                                                  fontSize: 12.0,
-                                                  fontWeight: FontWeight.w400))
-                                        ],
-                                      ))),
-                              Expanded(
-                                  flex: 1,
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                        topRight: Radius.circular(10),
-                                        bottomRight: Radius.circular(10)),
-                                    child: Image.network(event['signedEventBg'],
-                                        height: double.infinity,
-                                        fit: BoxFit.cover),
-                                  ))
-                            ]))
+                                            children: [
+                                              Text(
+                                                '${event['signedEventName']}-${event['signedEventDesc']}',
+                                                style: const TextStyle(
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w500),
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              const SizedBox(height: 6),
+                                              Text(
+                                                  '${event['signedEventDate']} at ${event['signedEventTime']}',
+                                                  style: const TextStyle(
+                                                      fontSize: 12.0,
+                                                      fontWeight: FontWeight.w400))
+                                            ],
+                                          ))),
+                                  Expanded(
+                                      flex: 1,
+                                      child: ClipRRect(
+                                        borderRadius: const BorderRadius.only(
+                                            topRight: Radius.circular(10),
+                                            bottomRight: Radius.circular(10)),
+                                        child: Image.network(event['signedEventBg'],
+                                            height: double.infinity,
+                                            fit: BoxFit.cover),
+                                      ))
+                                ]))
+                          ],
+                        );
+                      }),
+                    );
+                  else
+                    return Column(
+                      children: [
+                        SizedBox(height: 20,),
+                        Text("No Upcoming Event yet",style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromRGBO(
+                                53, 52, 77, 1.0))),
+                        Text("Hurry up and find the event you'd like to attend!",style: const TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromRGBO(
+                                108, 111, 132, 1.0)))
                       ],
                     );
-                  }),
-                );
-                else
-                  return Column(
-                    children: [
-                      SizedBox(height: 20,),
-                      Text("No Past Event yet",style: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(
-                              53, 52, 77, 1.0))),
-                      Text("Hurry up and find the event you'd like to attend!",style: const TextStyle(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(
-                              108, 111, 132, 1.0)))
-                    ],
-                  );
-              })
-            ],
-          ),
-          /*ListView(
+
+                }),
+                Consumer<ApplicationState>(builder: (context, appState, _) {
+                  List<Map<String, dynamic>> allSignedEvents =
+                  appState.signedEvent.map((eventData) {
+                    String dateString = eventData.signedEventDate;
+                    String timeString = eventData.signedEventTime;
+                    DateTime dateTime = DateTime.parse('$dateString $timeString');
+                    return {
+                      'signedEventDate': eventData.signedEventDate,
+                      'signedEventDesc': eventData.signedEventDesc,
+                      'signedEventName': eventData.signedEventName,
+                      'signedEventTime': eventData.signedEventTime,
+                      'signedEventBg': eventData.signedEventBg,
+                      'userId': eventData.userId,
+                      'dateTime': dateTime
+                    };
+                  }).toList();
+                  allSignedEvents.sort((a, b) {
+                    return a['dateTime'].compareTo(b['dateTime']);
+                  });
+                  DateTime today = DateTime.now();
+                  DateTime todayDate =
+                  DateTime(today.year, today.month, today.day);
+                  allSignedEvents = allSignedEvents
+                      .where((event) =>
+                  event['dateTime'].isBefore(todayDate) &&
+                      event['userId'] ==
+                          FirebaseAuth.instance.currentUser?.uid)
+                      .toList();
+                  if(allSignedEvents.length > 0)
+                    return ListView.builder(
+                      padding: const EdgeInsets.all(15),
+                      itemCount: allSignedEvents.length,
+                      itemBuilder: ((context, index) {
+                        final event = allSignedEvents[index];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              width: double.infinity,
+                              height: 10,
+                            ),
+                            Container(
+                                height: 120,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      //边框颜色
+                                      width: 1, //边框宽度
+                                    ), // 边色与边宽度
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 10, //阴影范围
+                                        spreadRadius: 0.1, //阴影浓度
+                                        color: Colors.grey.withOpacity(0.2), //阴影颜色
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white),
+                                child: Flex(direction: Axis.horizontal, children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Padding(
+                                          padding: const EdgeInsets.all(25),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${event['signedEventName']}-${event['signedEventDesc']}',
+                                                style: const TextStyle(
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.w500),
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                              const SizedBox(height: 6),
+                                              Text(
+                                                  '${event['signedEventDate']} at ${event['signedEventTime']}',
+                                                  style: const TextStyle(
+                                                      fontSize: 12.0,
+                                                      fontWeight: FontWeight.w400))
+                                            ],
+                                          ))),
+                                  Expanded(
+                                      flex: 1,
+                                      child: ClipRRect(
+                                        borderRadius: const BorderRadius.only(
+                                            topRight: Radius.circular(10),
+                                            bottomRight: Radius.circular(10)),
+                                        child: Image.network(event['signedEventBg'],
+                                            height: double.infinity,
+                                            fit: BoxFit.cover),
+                                      ))
+                                ]))
+                          ],
+                        );
+                      }),
+                    );
+                  else
+                    return Column(
+                      children: [
+                        SizedBox(height: 20,),
+                        Text("No Past Event yet",style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromRGBO(
+                                53, 52, 77, 1.0))),
+                        Text("Hurry up and find the event you'd like to attend!",style: const TextStyle(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromRGBO(
+                                108, 111, 132, 1.0)))
+                      ],
+                    );
+                })
+              ],
+            ),
+            /*ListView(
             padding: const EdgeInsets.all(15),
             children: [
               const Text("January",
@@ -365,6 +367,7 @@ class _EventsMainState extends State<EventsMain> with TickerProviderStateMixin {
             ],
           ),*/ /*
         )*/
+          ),
         )
       ],
     );
