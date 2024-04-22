@@ -2,7 +2,7 @@
     <application
         android:label="event_gather"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
                    android:value="AIzaSyA8yJphGGW6NAoNqdXSGMop30liLTaJlrc"/>
         <activity
