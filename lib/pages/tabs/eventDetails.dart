@@ -698,8 +698,6 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                               ),
                               IconButton(
                                 icon: const Icon(
-
-                                    /// 图标
                                     Icons.send,
                                     size: 24),
                                 onPressed: () async {
@@ -731,8 +729,6 @@ class _EventDetailsMainState extends State<EventDetailsMain>
                               ),
                               IconButton(
                                 icon: const Icon(
-
-                                    /// 图标
                                     Icons.add_circle_outline,
                                     size: 24,
                                     color: Color.fromRGBO(26, 26, 27, 1.0)),
