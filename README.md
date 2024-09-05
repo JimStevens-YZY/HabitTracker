@@ -38,7 +38,7 @@ Here's the link to the video demo, where you can watch a detailed demonstration 
 
 To install and run the EventGather application on Android, follow these steps:
 
-1. **Download the APK File** **📥**: Visit this URL: https://github.com/JimStevens-YZY/EventGather/releases and download the latest APK file. Ensure you're downloading from a trusted source.
+1. **Download the APK File** **📥**: Visit this URL: https://github.com/ZeyiYu/EventGather/releases and download the latest APK file. Ensure you're downloading from a trusted source.
 2. **Allow Installation from Unknown Sources** 🔓: Before installing the APK, go to your Android device's settings and navigate to "Security" or "Privacy." Enable "Install from Unknown Sources" or "Install Unknown Apps" to allow the installation of apps from outside the Google Play Store.
 3. **Install the APK** 📦: After downloading the APK file, locate it in your device's "Downloads" folder or notification panel. Tap the file to start the installation process, then follow the on-screen prompts to complete the installation.
 4. **Launch the App** **🚀**: Once installed, find the EventGather app icon on your Android home screen or app drawer, and tap to open it.
