@@ -6,7 +6,7 @@ EventGather is a platform for aggregating and managing various events in one pla
 
 ## Landing Page
 
-Please check out our website for more information: https://jimstevens-yzy.github.io/EventGatherLandingPage/
+Please check out our website for more information: https://zeyiyu.github.io/EventGatherLandingPage/
 
 ## Features
 
